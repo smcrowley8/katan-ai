@@ -1,0 +1,14 @@
+description: Store the build-test cache for pyenv, poetry, and pre-commit
+steps:
+  - save_cache:
+      key: v1-pyenv-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+      paths:
+        - "~/.pyenv"
+  - save_cache:
+      key: v1-poetry-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+      paths:
+        - "~/.cache/pypoetry"
+  - save_cache:
+      key: v1-precommit-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+      paths:
+        - "~/.cache/pre-commit"

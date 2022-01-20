@@ -1,0 +1,15 @@
+description: Test that the package can be installed and used
+executor: default
+steps:
+  - checkout
+  - circleci-cli/install
+  - restore-test-cache
+  - poetry-configure
+  - run:
+      name: Install Dependencies
+      command: poetry install
+  - run:
+      name: Test CLI command
+      command: |
+
+        echo "no command until package usable"

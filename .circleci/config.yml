@@ -1,0 +1,131 @@
+commands:
+    bump-branch-version:
+        description: Bump package version via git
+        steps:
+            - run:
+                command: |
+                    #.circleci/scripts/bump-version.sh "$GITHUB_PR_BASE_BRANCH" "$CIRCLE_BRANCH"
+
+                    poetry version patch
+                name: Bump package version
+    poetry-configure:
+        description: Configure poetry
+        steps:
+            - run:
+                command: |
+                    pip install -U pip setuptools
+                    pip install poetry
+                name: Configure poetry
+    restore-test-cache:
+        description: Restores the build-test cache for pyenv, poetry, and pre-commit
+        steps:
+            - restore_cache:
+                key: v1-pyenv-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+            - restore_cache:
+                key: v1-poetry-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+            - restore_cache:
+                key: v1-precommit-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+    save-test-cache:
+        description: Store the build-test cache for pyenv, poetry, and pre-commit
+        steps:
+            - save_cache:
+                key: v1-pyenv-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+                paths:
+                    - ~/.pyenv
+            - save_cache:
+                key: v1-poetry-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+                paths:
+                    - ~/.cache/pypoetry
+            - save_cache:
+                key: v1-precommit-{{ arch }}-katan-ai-{{ checksum "poetry.lock" }}
+                paths:
+                    - ~/.cache/pre-commit
+    store-test-artifacts:
+        description: Store test artifacts in CCI workflow run
+        parameters:
+            artifacts_path:
+                description: The absolute path to artifacts store as an env var
+                type: string
+            artifacts_storage_dir:
+                default: << parameters.artifacts_path >>
+                description: The direction in /tmp where artifacts are stored
+                type: string
+            export_test_results:
+                default: false
+                description: Whether or not to upload artifacts as Test Summary metadata
+                type: boolean
+        steps:
+            - store_artifacts:
+                destination: << parameters.artifacts_storage_dir >>
+                path: << parameters.artifacts_path >>
+            - when:
+                condition: << parameters.export_test_results >>
+                steps:
+                    - store_test_results:
+                        path: << parameters.artifacts_path >>
+executors:
+    default:
+        docker:
+            - image: cimg/python:3.8
+        resource_class: small
+    python-medium:
+        docker:
+            - image: cimg/python:3.8
+        resource_class: medium
+jobs:
+    build-test:
+        description: Test building with poetry, cruft, pre-commit, and run unit tests with pytest
+        executor: default
+        steps:
+            - checkout
+            - circleci-cli/install
+            - poetry-configure
+            - run:
+                command: poetry install
+                name: Install Dependencies
+            - run:
+                command: |
+                    poetry run pre-commit install
+                    poetry run pre-commit run
+                name: Run commit hooks
+            - run:
+                command: |
+                    mkdir -p test-results/unit
+                    poetry run pytest --junit-xml test-results/unit/results.xml
+                name: Run tests
+            - bump-branch-version
+            - store-test-artifacts:
+                artifacts_path: test-results
+                export_test_results: true
+            - save-test-cache
+    package-test:
+        description: Test that the package can be installed and used
+        executor: default
+        steps:
+            - checkout
+            - circleci-cli/install
+            - restore-test-cache
+            - poetry-configure
+            - run:
+                command: poetry install
+                name: Install Dependencies
+            - run:
+                command: |4
+
+                    echo "no command until package usable"
+                name: Test CLI command
+orbs:
+    aws-cli: circleci/aws-cli@2.0.3
+    circleci-cli: circleci/circleci-cli@0.1.9
+    github-cli: circleci/github-cli@1.0.3
+    python: circleci/python@1.2
+version: 2.1
+workflows:
+    pull-request-tests:
+        jobs:
+            - build-test:
+                filters:
+                    branches:
+                        ignore:
+                            - main
+
