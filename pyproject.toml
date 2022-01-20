@@ -10,6 +10,7 @@ inputs = "^0.5"
 selenium = "^4.1.0"
 requests = "^2.27.1"
 pre-commit = "^2.17.0"
+rich = "^11.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
