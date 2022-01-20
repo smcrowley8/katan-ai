@@ -1,4 +1,4 @@
-# readme
+# Katan AI
 
 Table of contents:
 
