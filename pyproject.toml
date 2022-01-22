@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "katan-ai"
+name = "katan_ai"
 version = "0.1.0"
 description = ""
 authors = ["smcrowley8 <smcrowley8@gmail.com>"]
@@ -11,6 +11,7 @@ selenium = "^4.1.0"
 requests = "^2.27.1"
 pre-commit = "^2.17.0"
 rich = "^11.0.0"
+numpy = "^1.22.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

@@ -176,6 +176,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "numpy"
+version = "1.22.1"
+description = "NumPy is the fundamental package for array computing with Python."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
 name = "outcome"
 version = "1.1.0"
 description = "Capture the outcome of Python function calls."
@@ -278,7 +286,7 @@ test = ["flaky", "pretend", "pytest (>=3.0.1)"]
 
 [[package]]
 name = "pyparsing"
-version = "3.0.6"
+version = "3.0.7"
 description = "Python parsing module"
 category = "dev"
 optional = false
@@ -485,7 +493,7 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "6f1733754278617f300e4ac232e4e3a518a3384f84e77b3ed6e7ea7245ced183"
+content-hash = "d459033d692c5647fefea94ebef9120f695d155d2ef66c03c60a9097140357c3"
 
 [metadata.files]
 async-generator = [
@@ -626,6 +634,30 @@ nodeenv = [
     {file = "nodeenv-1.6.0-py2.py3-none-any.whl", hash = "sha256:621e6b7076565ddcacd2db0294c0381e01fd28945ab36bcf00f41c5daf63bef7"},
     {file = "nodeenv-1.6.0.tar.gz", hash = "sha256:3ef13ff90291ba2a4a7a4ff9a979b63ffdd00a464dbe04acf0ea6471517a4c2b"},
 ]
+numpy = [
+    {file = "numpy-1.22.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:3d62d6b0870b53799204515145935608cdeb4cebb95a26800b6750e48884cc5b"},
+    {file = "numpy-1.22.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:831f2df87bd3afdfc77829bc94bd997a7c212663889d56518359c827d7113b1f"},
+    {file = "numpy-1.22.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:8d1563060e77096367952fb44fca595f2b2f477156de389ce7c0ade3aef29e21"},
+    {file = "numpy-1.22.1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:69958735d5e01f7b38226a6c6e7187d72b7e4d42b6b496aca5860b611ca0c193"},
+    {file = "numpy-1.22.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:45a7dfbf9ed8d68fd39763940591db7637cf8817c5bce1a44f7b56c97cbe211e"},
+    {file = "numpy-1.22.1-cp310-cp310-win_amd64.whl", hash = "sha256:7e957ca8112c689b728037cea9c9567c27cf912741fabda9efc2c7d33d29dfa1"},
+    {file = "numpy-1.22.1-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:800dfeaffb2219d49377da1371d710d7952c9533b57f3d51b15e61c4269a1b5b"},
+    {file = "numpy-1.22.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:65f5e257987601fdfc63f1d02fca4d1c44a2b85b802f03bd6abc2b0b14648dd2"},
+    {file = "numpy-1.22.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:632e062569b0fe05654b15ef0e91a53c0a95d08ffe698b66f6ba0f927ad267c2"},
+    {file = "numpy-1.22.1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0d245a2bf79188d3f361137608c3cd12ed79076badd743dc660750a9f3074f7c"},
+    {file = "numpy-1.22.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:26b4018a19d2ad9606ce9089f3d52206a41b23de5dfe8dc947d2ec49ce45d015"},
+    {file = "numpy-1.22.1-cp38-cp38-win32.whl", hash = "sha256:f8ad59e6e341f38266f1549c7c2ec70ea0e3d1effb62a44e5c3dba41c55f0187"},
+    {file = "numpy-1.22.1-cp38-cp38-win_amd64.whl", hash = "sha256:60f19c61b589d44fbbab8ff126640ae712e163299c2dd422bfe4edc7ec51aa9b"},
+    {file = "numpy-1.22.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:2db01d9838a497ba2aa9a87515aeaf458f42351d72d4e7f3b8ddbd1eba9479f2"},
+    {file = "numpy-1.22.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:bcd19dab43b852b03868796f533b5f5561e6c0e3048415e675bec8d2e9d286c1"},
+    {file = "numpy-1.22.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:78bfbdf809fc236490e7e65715bbd98377b122f329457fffde206299e163e7f3"},
+    {file = "numpy-1.22.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c51124df17f012c3b757380782ae46eee85213a3215e51477e559739f57d9bf6"},
+    {file = "numpy-1.22.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:88d54b7b516f0ca38a69590557814de2dd638d7d4ed04864826acaac5ebb8f01"},
+    {file = "numpy-1.22.1-cp39-cp39-win32.whl", hash = "sha256:b5ec9a5eaf391761c61fd873363ef3560a3614e9b4ead17347e4deda4358bca4"},
+    {file = "numpy-1.22.1-cp39-cp39-win_amd64.whl", hash = "sha256:4ac4d7c9f8ea2a79d721ebfcce81705fc3cd61a10b731354f1049eb8c99521e8"},
+    {file = "numpy-1.22.1-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e60ef82c358ded965fdd3132b5738eade055f48067ac8a5a8ac75acc00cad31f"},
+    {file = "numpy-1.22.1.zip", hash = "sha256:e348ccf5bc5235fc405ab19d53bec215bb373300e5523c7b476cc0da8a5e9973"},
+]
 outcome = [
     {file = "outcome-1.1.0-py2.py3-none-any.whl", hash = "sha256:c7dd9375cfd3c12db9801d080a3b63d4b0a261aa996c4c13152380587288d958"},
     {file = "outcome-1.1.0.tar.gz", hash = "sha256:e862f01d4e626e63e8f92c38d1f8d5546d3f9cce989263c521b2e7990d186967"},
@@ -663,8 +695,8 @@ pyopenssl = [
     {file = "pyOpenSSL-21.0.0.tar.gz", hash = "sha256:5e2d8c5e46d0d865ae933bef5230090bdaf5506281e9eec60fa250ee80600cb3"},
 ]
 pyparsing = [
-    {file = "pyparsing-3.0.6-py3-none-any.whl", hash = "sha256:04ff808a5b90911829c55c4e26f75fa5ca8a2f5f36aa3a51f68e27033341d3e4"},
-    {file = "pyparsing-3.0.6.tar.gz", hash = "sha256:d9bdec0013ef1eb5a84ab39a3b3868911598afa494f5faa038647101504e2b81"},
+    {file = "pyparsing-3.0.7-py3-none-any.whl", hash = "sha256:a6c06a88f252e6c322f65faf8f418b16213b51bdfaece0524c1c1bc30c63c484"},
+    {file = "pyparsing-3.0.7.tar.gz", hash = "sha256:18ee9022775d270c55187733956460083db60b37d0d0fb357445f3094eed3eea"},
 ]
 pytest = [
     {file = "pytest-5.4.3-py3-none-any.whl", hash = "sha256:5c0db86b698e8f170ba4582a492248919255fcd4c79b1ee64ace34301fb589a1"},
