@@ -20,5 +20,6 @@ class Board:
         self,
         boardSetup: List[List[int]] = BASIC_BOARD_SETUP,
     ) -> None:
+        """Init a game board"""
         self.hexTileDict = {}
         self.board = boardSetup
