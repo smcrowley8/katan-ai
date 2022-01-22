@@ -1,5 +1,4 @@
 import queue
-import sys
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -60,7 +59,7 @@ class catanAIGame:
         self.playCatan()
 
         # Plot diceStats histogram
-        plt.hist(self.diceStats_list, bins=11)
+        plt.hist(self.diceStats_list, bins=11)  # noqa:
         plt.show()
 
         return None

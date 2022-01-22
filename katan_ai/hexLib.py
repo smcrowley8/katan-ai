@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import collections
 import math
-from typing import Tuple
 
 # Define the x y point for pixels
 Point = collections.namedtuple("Point", ["x", "y"])
