@@ -12,6 +12,7 @@ requests = "^2.27.1"
 pre-commit = "^2.17.0"
 rich = "^11.0.0"
 numpy = "^1.22.1"
+colored = "^1.4.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

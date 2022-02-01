@@ -60,7 +60,7 @@ repos:
         types: [file, python]
         additional_dependencies: [black==21.9b0]
 
-# TODO
+
 #      - id: mypy
 #        name: Type Check Python (mypy)
 #        entry: mypy
