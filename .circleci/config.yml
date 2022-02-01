@@ -112,7 +112,7 @@ jobs:
             - run:
                 command: |4
 
-                    echo "no command until package usable"
+                    poetry run katanAI --help
                 name: Test CLI command
 orbs:
     aws-cli: circleci/aws-cli@2.0.3

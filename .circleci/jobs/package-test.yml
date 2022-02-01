@@ -12,4 +12,4 @@ steps:
       name: Test CLI command
       command: |
 
-        echo "no command until package usable"
+        poetry run katanAI --help

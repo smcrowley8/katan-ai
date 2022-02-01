@@ -2,7 +2,24 @@
 name = "katan_ai"
 version = "0.1.0"
 description = ""
-authors = ["smcrowley8 <smcrowley8@gmail.com>"]
+authors = ["Sean Crowley <smcrowley8@gmail.com>"]
+maintainers = ["Sean Crowleu <smcrowley8@gmail.com>"]
+readme = "README.md"
+homepage = ""
+repository = "https://github.com/smcrowley8/myAES"
+keywords = [
+    "Poetry",
+    "CLI",
+    "AES",
+    "encryption"
+]
+packages = [
+    {include = "katan_ai"}
+]
+
+[tool.poetry.scripts]
+katanAI= "katan_ai.main:cli"
+
 
 [tool.poetry.dependencies]
 python = "^3.8"

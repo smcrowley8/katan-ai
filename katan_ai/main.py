@@ -23,3 +23,8 @@ def cli() -> None:
 def join_lobby(lobbyID: str) -> None:
     """Join a colonist.io game given the game lobby"""
     command_join_lobby(lobbyID=lobbyID)
+
+
+if __name__ == "__main__":
+    """Run main cli"""
+    cli()
