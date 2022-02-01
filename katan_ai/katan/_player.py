@@ -1,4 +1,3 @@
-""""""
 import random
 from typing import Dict, List, Optional
 
@@ -16,7 +15,7 @@ class Player:
             connected_harbors (Set[Harbor]): The harbors this player is connected to. Used to determine the valid trades
     """
 
-    def __init__(self) -> None:
+    def __init__(self):
         self.resources: Dict[Resource, int] = {res: 0 for res in Resource}
         self.development_cards = {d: 0 for d in DevelopmentCard}
         self.connected_harbors = set()
@@ -36,7 +35,7 @@ class Player:
                 return False
         return True
 
-    def remove_resources(self, resources: Dict[Resource, int]) -> None:
+    def remove_resources(self, resources: Dict[Resource, int]):
         """Remove the given resources from the player's hand.
 
         Args:
@@ -53,7 +52,7 @@ class Player:
         for res, num in resources.items():
             self.resources[res] -= num
 
-    def add_resources(self, resources: Dict[Resource, int]) -> None:
+    def add_resources(self, resources: Dict[Resource, int]):
         """Add some resources to this player's hand.
 
         Args:
@@ -99,7 +98,7 @@ class Player:
         # Filter out duplicates
         return [dict(t) for t in {tuple(d.items()) for d in trades}]
 
-    def play_development_card(self, card: DevelopmentCard) -> None:
+    def play_development_card(self, card: DevelopmentCard):
         """Mark a development card as played.
 
         i.e. remove it from the player's hand

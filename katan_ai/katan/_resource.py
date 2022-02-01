@@ -1,4 +1,3 @@
-""""""
 from enum import Enum
 
 
@@ -16,7 +15,7 @@ class Resource(Enum):
     ORE = 4
     """The ore resource"""
 
-    def __repl__(self) -> str:
+    def __repl__(self):
         return {
             Resource.LUMBER: "Lumber",
             Resource.BRICK: "Brick",
@@ -25,12 +24,5 @@ class Resource(Enum):
             Resource.ORE: "Ore",
         }[self]
 
-    def __str__(self) -> str:
-        # return self.__repl__()
-        return {
-            Resource.LUMBER: "Lumber",
-            Resource.BRICK: "Brick",
-            Resource.WOOL: "Wool",
-            Resource.GRAIN: "Grain",
-            Resource.ORE: "Ore",
-        }[self]
+    def __str__(self):
+        return self.__repl__()

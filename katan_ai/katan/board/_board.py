@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from itertools import product
 from typing import Dict, FrozenSet, Optional, Set
 
@@ -54,7 +52,7 @@ class Board:
 
     def __init__(
         self, hexes: Set[Hex], harbors: Set[Harbor] = set(), robber: Coords = None
-    ) -> None:
+    ):
         self.hexes: Dict[Coords, Hex] = dict(zip((h.coords for h in hexes), hexes))
         self.harbors = {frozenset(h.path_coords): h for h in harbors}
         # Position the robber on the desert

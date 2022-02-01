@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Coords:
     """
     A class used to represent coordinates on the Catan board.
@@ -13,27 +10,24 @@ class Coords:
             r (int): The r coordinate
     """
 
-    def __init__(self, q: int, r: int) -> None:
+    def __init__(self, q, r):
         self.q = q
         self.r = r
 
-    def __hash__(self) -> int:
+    def __hash__(self):
         return hash((self.q, self.r))
 
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, Coords):
-            # TODO
-            return False
+    def __eq__(self, other):
         return self.q == other.q and self.r == other.r
 
-    def __add__(self, other: Coords) -> Coords:
+    def __add__(self, other):
         return Coords(self.q + other.q, self.r + other.r)
 
-    def __sub__(self, other: Coords) -> Coords:
+    def __sub__(self, other):
         return Coords(self.q - other.q, self.r - other.r)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return "(q: %d, r:%d)" % (self.q, self.r)
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return self.__str__()

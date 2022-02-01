@@ -1,4 +1,3 @@
-""""""
 from enum import Enum
 from typing import Dict
 
@@ -28,7 +27,7 @@ class DevelopmentCard(Enum):
         """
         return {Resource.WOOL: 1, Resource.GRAIN: 1, Resource.ORE: 1}
 
-    def __str__(self) -> str:
+    def __str__(self):
         return {
             DevelopmentCard.KNIGHT: "Knight",
             DevelopmentCard.YEAR_OF_PLENTY: "Year of Plenty",
@@ -37,5 +36,5 @@ class DevelopmentCard(Enum):
             DevelopmentCard.MONOPOLY: "Monopoly",
         }[self]
 
-    def __repl__(self) -> str:
+    def __repl__(self):
         return self.__str__()

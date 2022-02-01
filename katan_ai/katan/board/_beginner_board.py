@@ -1,9 +1,7 @@
-from __future__ import annotations
-
 from .._resource import Resource
 from ._board import Board
 from ._coords import Coords
-from ._harbor import Harbor, Set
+from ._harbor import Harbor
 from ._hex import Hex
 from ._hex_type import HexType
 
@@ -11,7 +9,7 @@ from ._hex_type import HexType
 class BeginnerBoard(Board):
     """The beginner board, as outlined in the Catan rules."""
 
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__(
             hexes={
                 Hex(Coords(4, -2), HexType.MOUNTAINS, 10),
@@ -34,31 +32,23 @@ class BeginnerBoard(Board):
                 Hex(Coords(-3, 0), HexType.FIELDS, 6),
                 Hex(Coords(-4, 2), HexType.PASTURE, 11),
             },
-            harbors=Set(
-                [
-                    Harbor(
-                        path_coords={Coords(4, 0), Coords(3, 1)},
-                        resource=Resource.GRAIN,
-                    ),
-                    Harbor(
-                        path_coords={Coords(1, 3), Coords(0, 4)}, resource=Resource.ORE
-                    ),
-                    Harbor(path_coords={Coords(-2, 5), Coords(-3, 5)}, resource=None),
-                    Harbor(
-                        path_coords={Coords(-4, 3), Coords(-4, 4)},
-                        resource=Resource.WOOL,
-                    ),
-                    Harbor(path_coords={Coords(-4, 0), Coords(-4, 1)}, resource=None),
-                    Harbor(path_coords={Coords(-2, -3), Coords(-3, -2)}, resource=None),
-                    Harbor(
-                        path_coords={Coords(2, -5), Coords(1, -4)},
-                        resource=Resource.BRICK,
-                    ),
-                    Harbor(
-                        path_coords={Coords(3, -4), Coords(4, -4)},
-                        resource=Resource.LUMBER,
-                    ),
-                    Harbor(path_coords={Coords(5, -3), Coords(5, -2)}, resource=None),
-                ]
-            ),
+            harbors=[
+                Harbor(
+                    path_coords={Coords(4, 0), Coords(3, 1)}, resource=Resource.GRAIN
+                ),
+                Harbor(path_coords={Coords(1, 3), Coords(0, 4)}, resource=Resource.ORE),
+                Harbor(path_coords={Coords(-2, 5), Coords(-3, 5)}, resource=None),
+                Harbor(
+                    path_coords={Coords(-4, 3), Coords(-4, 4)}, resource=Resource.WOOL
+                ),
+                Harbor(path_coords={Coords(-4, 0), Coords(-4, 1)}, resource=None),
+                Harbor(path_coords={Coords(-2, -3), Coords(-3, -2)}, resource=None),
+                Harbor(
+                    path_coords={Coords(2, -5), Coords(1, -4)}, resource=Resource.BRICK
+                ),
+                Harbor(
+                    path_coords={Coords(3, -4), Coords(4, -4)}, resource=Resource.LUMBER
+                ),
+                Harbor(path_coords={Coords(5, -3), Coords(5, -2)}, resource=None),
+            ],
         )

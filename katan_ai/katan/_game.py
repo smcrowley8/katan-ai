@@ -1,4 +1,3 @@
-""""""
 from random import shuffle
 from typing import Dict, Optional, Set
 

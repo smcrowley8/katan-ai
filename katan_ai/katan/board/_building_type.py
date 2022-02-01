@@ -1,7 +1,4 @@
-from __future__ import annotations
-
 from enum import Enum
-from typing import Dict
 
 from .._resource import Resource
 
@@ -16,7 +13,7 @@ class BuildingType(Enum):
     CITY = 2
     """The cities"""
 
-    def get_required_resources(self) -> Dict[Resource, int]:
+    def get_required_resources(self):
         """Get the resources required to build this building.
 
         Returns:
@@ -33,6 +30,3 @@ class BuildingType(Enum):
             }
         elif self == BuildingType.CITY:
             return {Resource.ORE: 3, Resource.GRAIN: 2}
-
-        # unreachable but for mypy
-        return {}
