@@ -1,7 +1,8 @@
+"""Module representing a path from one coord to another"""
 from typing import Optional, Set
 
-from .building import PathBuilding
-from .coords import Coords
+from katan_ai.katan.board.building import PathBuilding
+from katan_ai.katan.board.coords import Coords
 
 
 class Path:

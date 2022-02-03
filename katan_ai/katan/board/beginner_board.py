@@ -1,14 +1,16 @@
-from .board import Board, Resource
-from .coords import Coords
-from .harbor import Harbor
-from .hex import Hex
-from .hex_type import HexType
+"""Function representing the basic catan board format"""
+from katan_ai.katan.board.board import Board, Resource
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.board.harbor import Harbor
+from katan_ai.katan.board.hex import Hex
+from katan_ai.katan.board.hex_type import HexType
 
 
 class BeginnerBoard(Board):
     """The beginner board, as outlined in the Catan rules."""
 
     def __init__(self):
+        """Initialize board based off Board class and static setup"""
         super().__init__(
             hexes={
                 Hex(Coords(4, -2), HexType.MOUNTAINS, 10),

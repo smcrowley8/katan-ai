@@ -1,9 +1,9 @@
-from typing import Set
+"""Module representing a city or settlement"""
 
-from ..player import Player
-from .building import Building
-from .building_type import BuildingType
-from .coords import Coords
+from katan_ai.katan.board.building import Building
+from katan_ai.katan.board.building_type import BuildingType
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.player import Player
 
 
 class IntersectionBuilding(Building):

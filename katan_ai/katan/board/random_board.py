@@ -1,11 +1,12 @@
+"""Module representing a randomized catan board"""
 import random
 
-from ..resource import Resource
-from .board import Board
-from .coords import Coords
-from .harbor import Harbor
-from .hex import Hex
-from .hex_type import HexType
+from katan_ai.katan.board.board import Board
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.board.harbor import Harbor
+from katan_ai.katan.board.hex import Hex
+from katan_ai.katan.board.hex_type import HexType
+from katan_ai.katan.resource import Resource
 
 
 class RandomBoard(Board):

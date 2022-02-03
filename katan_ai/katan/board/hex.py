@@ -1,7 +1,8 @@
+"""Module representing a catan hex (board space)"""
 from typing import Optional, Set
 
-from .coords import Coords
-from .hex_type import HexType
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.board.hex_type import HexType
 
 
 class Hex:

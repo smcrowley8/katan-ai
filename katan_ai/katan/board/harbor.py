@@ -1,7 +1,8 @@
+"""Module representing harbor trading ports for catan"""
 from typing import Set
 
-from ..resource import Resource
-from .coords import Coords
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.resource import Resource
 
 
 class Harbor:

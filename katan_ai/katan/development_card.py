@@ -1,7 +1,8 @@
+"""Module representing a development card"""
 from enum import Enum
 from typing import Dict
 
-from .resource import Resource
+from katan_ai.katan.resource import Resource
 
 
 class DevelopmentCard(Enum):

@@ -1,9 +1,11 @@
-"""For rendering board on a terminal screen"""
+"""Module for rendering board on a terminal"""
+from __future__ import annotations
+
 from typing import Dict, Optional, Tuple
 
 from colored import bg, fg, stylize
 
-from katan_ai.katan import board
+from katan_ai.katan.board.board import Board
 from katan_ai.katan.board.building_type import BuildingType
 from katan_ai.katan.board.coords import Coords
 from katan_ai.katan.board.hex import Hex
@@ -50,7 +52,7 @@ class BoardRenderer:
 
     def __init__(
         self,
-        board: board.Board,
+        board: Board,
         player_color_map: Optional[Dict[Player, str]] = {},
         hex_color_map: Optional[Dict[HexType, str]] = DEFAULT_HEX_COLORS,
         resource_color_map: Optional[Dict[Resource, str]] = DEFAULT_RESOURCE_COLORS,

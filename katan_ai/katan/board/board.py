@@ -1,25 +1,28 @@
+"""Module representing a basic catan board"""
+from __future__ import annotations
+
 from itertools import product
 from typing import Dict, FrozenSet, Optional, Set
 
-from ..errors import (
+from katan_ai.katan.board.building import PathBuilding
+from katan_ai.katan.board.building_type import BuildingType
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.board.harbor import Harbor
+from katan_ai.katan.board.hex import Hex
+from katan_ai.katan.board.hex_type import HexType
+from katan_ai.katan.board.intersection import Intersection
+from katan_ai.katan.board.intersection_building import IntersectionBuilding
+from katan_ai.katan.board.path import Path
+from katan_ai.katan.errors import (
     CoordsBlockedError,
     InvalidCoordsError,
     NotConnectedError,
     RequiresSettlementError,
     TooCloseToBuildingError,
 )
-from ..player import Player
-from ..resource import Resource
-from ..roll_yield import RollYield, RollYieldSource
-from .building import PathBuilding
-from .building_type import BuildingType
-from .coords import Coords
-from .harbor import Harbor
-from .hex import Hex
-from .hex_type import HexType
-from .intersection import Intersection
-from .intersection_building import IntersectionBuilding
-from .path import Path
+from katan_ai.katan.player import Player
+from katan_ai.katan.resource import Resource
+from katan_ai.katan.roll_yield import RollYield, RollYieldSource
 
 
 class Board:
@@ -54,6 +57,7 @@ class Board:
     def __init__(
         self, hexes: Set[Hex], harbors: Set[Harbor] = set(), robber: Coords = None
     ):
+        """"""
         self.hexes: Dict[Coords, Hex] = dict(zip((h.coords for h in hexes), hexes))
         self.harbors = {frozenset(h.path_coords): h for h in harbors}
         # Position the robber on the desert
@@ -575,9 +579,12 @@ class Board:
         )
 
     def __str__(self):
-        from .board_renderer import BoardRenderer
+        """Cast this board into a terminal readable and colored text"""
+
+        from katan_ai.katan.board.board_renderer import BoardRenderer
 
         return BoardRenderer(self).get_board_as_string()
 
     def __repl__(self):
+        """Cast board to terminal readable text"""
         return self.__str__()

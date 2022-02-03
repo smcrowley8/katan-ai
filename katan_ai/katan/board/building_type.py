@@ -1,6 +1,7 @@
+"""Module representing the type of catan building"""
 from enum import Enum
 
-from ..resource import Resource
+from katan_ai.katan.resource import Resource
 
 
 class BuildingType(Enum):

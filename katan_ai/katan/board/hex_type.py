@@ -1,6 +1,7 @@
+"""Module representing the resource afiiliated with a hex"""
 from enum import Enum
 
-from ..resource import Resource
+from katan_ai.katan.resource import Resource
 
 
 class HexType(Enum):

@@ -1,18 +1,19 @@
 """Submodule that is used to hold the board state."""
 
-from .beginner_board import BeginnerBoard
-from .board import Board
-from .board_renderer import BoardRenderer
-from .building import Building, PathBuilding
-from .building_type import BuildingType
-from .coords import Coords
-from .harbor import Harbor
-from .hex import Hex
-from .hex_type import HexType
-from .intersection import Intersection
-from .intersection_building import IntersectionBuilding
-from .path import Path
-from .random_board import RandomBoard
+"""
+from katan_ai.katan.board.beginner_board import BeginnerBoard
+from katan_ai.katan.board.board import Board
+from katan_ai.katan.board.board_renderer import BoardRenderer
+from katan_ai.katan.board.building import Building, PathBuilding
+from katan_ai.katan.board.building_type import BuildingType
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.board.harbor import Harbor
+from katan_ai.katan.board.hex import Hex
+from katan_ai.katan.board.hex_type import HexType
+from katan_ai.katan.board.intersection import Intersection
+from katan_ai.katan.board.intersection_building import IntersectionBuilding
+from katan_ai.katan.board.path import Path
+from katan_ai.katan.board.random_board import RandomBoard
 
 __all__ = [
     "Board",
@@ -30,3 +31,4 @@ __all__ = [
     "Path",
     "RandomBoard",
 ]
+"""

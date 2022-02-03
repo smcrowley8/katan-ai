@@ -1,3 +1,6 @@
+"""Module for representing coordinates used to identify roads, buildings, and hexes in the catan game"""
+
+
 class Coords:
     """
     A class used to represent coordinates on the Catan board.

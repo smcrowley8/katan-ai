@@ -1,13 +1,13 @@
 from random import shuffle
 from typing import Dict, Optional, Set
 
-from .board.board import Board
-from .board.building_type import BuildingType
-from .board.coords import Coords
-from .development_card import DevelopmentCard
-from .errors import NotEnoughResourcesError
-from .player import Player
-from .roll_yield import RollYield
+from katan_ai.katan.board.board import Board
+from katan_ai.katan.board.building_type import BuildingType
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.development_card import DevelopmentCard
+from katan_ai.katan.errors import NotEnoughResourcesError
+from katan_ai.katan.player import Player
+from katan_ai.katan.roll_yield import RollYield
 
 
 class Game:
@@ -27,6 +27,7 @@ class Game:
     """
 
     def __init__(self, board: Board, num_players: Optional[int] = 4):
+        """Initialize game based off of a given board setup and number of players"""
         self.board = board
         self.players = [Player() for i in range(num_players)]
         self.longest_road_owner = None

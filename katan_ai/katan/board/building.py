@@ -1,8 +1,9 @@
+"""Module representing a base building model as well as a road(PathBuilding)"""
 from typing import Set
 
-from ..player import Player
-from .building_type import BuildingType
-from .coords import Coords
+from katan_ai.katan.board.building_type import BuildingType
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.player import Player
 
 
 class Building:

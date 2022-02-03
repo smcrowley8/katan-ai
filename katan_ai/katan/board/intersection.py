@@ -1,7 +1,8 @@
+"""Module representing the intersections where paths meet"""
 from typing import Optional, Set
 
-from .coords import Coords
-from .intersection_building import IntersectionBuilding
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.board.intersection_building import IntersectionBuilding
 
 
 class Intersection:
