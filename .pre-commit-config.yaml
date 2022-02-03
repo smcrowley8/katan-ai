@@ -23,7 +23,7 @@ repos:
       - id: end-of-file-fixer
         exclude: |
           (?x)^(
-            .circleci/config.yml
+            .circleci/config.yml|docs/user/
           )$
         stages: [commit]
       - id: forbid-new-submodules
@@ -34,6 +34,15 @@ repos:
 
   - repo: local
     hooks:
+      - id: pdoc
+        name: pdoc
+        language: python
+        types: [python]
+        entry: pdoc --html --force --config show_source_code=False --output-dir docs/user katan_ai
+        description: build documentation
+        hooks:
+          - id: end-of-file-fixer
+
       - id: codespell
         name: Spell-check Python files (codespell)
         entry: codespell

@@ -1,9 +1,10 @@
+"""Represents a player in a katan game"""
 import random
 from typing import Dict, List, Optional
 
-from .development_card import DevelopmentCard
-from .errors import NotEnoughResourcesError
-from .resource import Resource
+from katan_ai.katan.development_card import DevelopmentCard
+from katan_ai.katan.errors import NotEnoughResourcesError
+from katan_ai.katan.resource import Resource
 
 
 class Player:
@@ -16,33 +17,42 @@ class Player:
     """
 
     def __init__(self):
+        """
+        Creates dict for resources this player has available.
+        Creates dicts for development cards this player has available.
+        Creates a set for any harbors the player is connected to.
+        Creates a counter for how many knights have been played.
+
+        """
         self.resources: Dict[Resource, int] = {res: 0 for res in Resource}
         self.development_cards = {d: 0 for d in DevelopmentCard}
         self.connected_harbors = set()
         self.number_played_knights = 0
 
     def has_resources(self, resources: Dict[Resource, int]) -> bool:
-        """Check if the player has the resources given.
+        """Check if the player has the resources needed to make the purchase given.
 
         Args:
-            resources: The resources to check that the player has
+            resources: Dict[Resource, int]: The resources to check that the player has
 
         Returns:
             bool: True if the player has the resources, false otherwise
+
         """
         for res, num in resources.items():
             if self.resources[res] < num:
                 return False
         return True
 
-    def remove_resources(self, resources: Dict[Resource, int]):
+    def remove_resources(self, resources: Dict[Resource, int]) -> None:
         """Remove the given resources from the player's hand.
 
         Args:
-            resources: The resources to remove
+            resources: Dict[Resource, int]: The resources to remove.
 
         Raises:
-            NotEnoughResourcesError: If the player does not have the resources
+            NotEnoughResourcesError: If the player does not have the resources.
+
         """
         if not self.has_resources(resources):
             raise NotEnoughResourcesError(
@@ -52,11 +62,12 @@ class Player:
         for res, num in resources.items():
             self.resources[res] -= num
 
-    def add_resources(self, resources: Dict[Resource, int]):
+    def add_resources(self, resources: Dict[Resource, int]) -> None:
         """Add some resources to this player's hand.
 
         Args:
-            resources: The resources to add
+            resources: Dict[Resource, int]: The resources to add to this players hand.
+
         """
         for res, num in resources.items():
             self.resources[res] += num
@@ -64,9 +75,10 @@ class Player:
     def get_possible_trades(self) -> List[Dict[Resource, int]]:
         """Get a list of the possible trades for this player.
 
-        Returns:
+        Returns: List[Dict[Resource, int]]
             The possible trades for this player.
             Negative numbers mean the player would give away those resources, positive numbers mean the player would receive those resources
+
         """
         trades = []
         # Use this map to avoid including a worse deal
@@ -98,10 +110,8 @@ class Player:
         # Filter out duplicates
         return [dict(t) for t in {tuple(d.items()) for d in trades}]
 
-    def play_development_card(self, card: DevelopmentCard):
-        """Mark a development card as played.
-
-        i.e. remove it from the player's hand
+    def play_development_card(self, card: DevelopmentCard) -> None:
+        """Mark a development card as played and remove form players hand.
 
         Args:
             card: The card to play
@@ -117,11 +127,12 @@ class Player:
     def get_random_resource(self) -> Optional[Resource]:
         """Get a random resource from this player.
 
-        Weighs the different resources depending on how many the player has in their hand.
+        Weighs the different resources depending on how many the player has.
         This is equavalent to randomly picking a resource out of the player's hand, i.e. when stealing a card via a knight card or rolling a 7.
 
         Returns:
             The resource, or None if the player has no resources
+
         """
         resources = sum([[res] * amount for res, amount in self.resources.items()], [])
         return (

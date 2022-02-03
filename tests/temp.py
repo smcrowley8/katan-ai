@@ -1,7 +1,6 @@
 import random
-
-from katan_ai.katan import Game
-from katan_ai.katan.board import RandomBoard
+from katan_ai.katan.game import Game
+from katan_ai.katan.board.random_board import RandomBoard
 
 game = Game(RandomBoard())
 

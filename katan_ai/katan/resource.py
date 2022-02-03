@@ -1,3 +1,4 @@
+"""Represents resources that players can obtain"""
 from enum import Enum
 
 

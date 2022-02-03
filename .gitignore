@@ -67,6 +67,9 @@
 # ipython files
 **/.ipynb_checkpoints
 __pycache__
+*/__pycache__
+**/__pycache__
+**/__pycache__/**
 
 # Logs and databases #
 ######################

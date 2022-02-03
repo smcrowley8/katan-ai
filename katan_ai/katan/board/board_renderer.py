@@ -1,16 +1,17 @@
+"""For rendering board on a terminal screen"""
 from typing import Dict, Optional, Tuple
 
 from colored import bg, fg, stylize
 
-from . import board
-from ..player import Player
-from ..resource import Resource
-from .building_type import BuildingType
-from .coords import Coords
-from .hex import Hex
-from .hex_type import HexType
-from .intersection import Intersection
-from .path import Path
+from katan_ai.katan import board
+from katan_ai.katan.board.building_type import BuildingType
+from katan_ai.katan.board.coords import Coords
+from katan_ai.katan.board.hex import Hex
+from katan_ai.katan.board.hex_type import HexType
+from katan_ai.katan.board.intersection import Intersection
+from katan_ai.katan.board.path import Path
+from katan_ai.katan.player import Player
+from katan_ai.katan.resource import Resource
 
 
 class BoardRenderer:

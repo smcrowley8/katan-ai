@@ -18,7 +18,7 @@ packages = [
 ]
 
 [tool.poetry.scripts]
-katanAI= "katan_ai.main:cli"
+katanAI= "katan_ai.cli:cli"
 
 
 [tool.poetry.dependencies]

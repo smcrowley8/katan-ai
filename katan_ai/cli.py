@@ -6,9 +6,9 @@ from typing import Optional
 import click
 from rich.console import Console  # , ConsoleThreadLocals
 
-from .commands.colonistCommands import command_join_lobby
-from .commands.gameCommands import command_make_game
-from .katan import Game
+from katan_ai.commands.colonistCommands import command_join_lobby
+from katan_ai.commands.gameCommands import command_make_game
+from katan_ai.katan.game import Game
 
 GAME: Optional[Game] = None
 
@@ -27,6 +27,7 @@ def cli() -> None:
 )
 def join_lobby(lobbyID: str) -> None:
     """Join a colonist.io game given the game lobby"""
+    global GAME
     command_join_lobby(lobbyID=lobbyID)
     # TODO: get board setup and player order from the site
     # TODO: have game creation be based off board data gotten from above
