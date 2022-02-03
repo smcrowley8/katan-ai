@@ -1,6 +1,6 @@
 """Unit tests for the resource class of the katan module"""
 
-from katan_ai.katan import Resource
+from katan_ai.katan.resource import Resource
 
 def test_wood_resource():
     wood_resouce = Resource(0)

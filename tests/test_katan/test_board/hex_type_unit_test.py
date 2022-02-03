@@ -1,6 +1,6 @@
 """Unit tests for hex_type of katanAI.katan.board module"""
 
-from katan_ai.katan.board import HexType
+from katan_ai.katan.board.hex_type import HexType
 
 def test_forest_hex_type():
     forest_hex = HexType(0)
