@@ -7,6 +7,16 @@ default_language_version:
 exclude: "tests/.*$"
 
 repos:
+
+  - repo: local
+    hooks:
+      - id: pdoc
+        name: pdoc
+        language: python
+        types: [python]
+        entry: pdoc --force --html --config show_source_code=True --output-dir docs katan_ai
+        description: build documentation
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
@@ -34,12 +44,6 @@ repos:
 
   - repo: local
     hooks:
-      - id: pdoc
-        name: pdoc
-        language: python
-        types: [python]
-        entry: pdoc --force --html --config show_source_code=True --output-dir docs katan_ai
-        description: build documentation
 
       - id: codespell
         name: Spell-check Python files (codespell)
