@@ -40,8 +40,6 @@ repos:
         types: [python]
         entry: pdoc --force --config show_source_code=True --output-dir docs/user katan_ai
         description: build documentation
-        hooks:
-          - id: end-of-file-fixer
 
       - id: codespell
         name: Spell-check Python files (codespell)
