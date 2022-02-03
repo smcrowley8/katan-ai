@@ -1,4 +1,4 @@
-"""module for CLI and abstract game commands"""
+"""module for CLI entry and abstract game commands"""
 
 __version__ = "0.1.0"
 
