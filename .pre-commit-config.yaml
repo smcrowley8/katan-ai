@@ -14,7 +14,7 @@ repos:
         name: pdoc
         language: python
         types: [python]
-        entry: pdoc --force --html --config show_source_code=True --output-dir docs katan_ai
+        entry: pdoc --force --config show_source_code=True --output-dir docs katan_ai
         description: build documentation
 
   - repo: https://github.com/pre-commit/pre-commit-hooks

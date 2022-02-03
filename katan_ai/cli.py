@@ -1,4 +1,4 @@
-"""Main cli entry point"""
+"""CLI entry point"""
 # from re import L
 # import sys
 from typing import Optional
