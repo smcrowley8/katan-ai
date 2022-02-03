@@ -102,7 +102,6 @@ htmlcov
 /.anaconda
 /.envs
 /record.txt
-/docs/build
 /examples/movies/movies.db
 *.orig
 CHANGELOG.temp
