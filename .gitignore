@@ -110,3 +110,7 @@ cov.xml
 coverage.xml
 junit.xml
 /fake_project
+.pytest_cache
+
+## mypy
+.mypy_cache
