@@ -4,5 +4,6 @@ from katan_ai.katan.game import Game
 
 
 def command_make_game() -> Game:
+    """Makes a katan game that is saved to the module for accessing"""
     # TODO: add parameters for game creation to be based of the board and player order given
     return Game(RandomBoard())
