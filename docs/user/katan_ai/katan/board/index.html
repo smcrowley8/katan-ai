@@ -1,0 +1,3086 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>katan_ai.katan.board API documentation</title>
+<meta name="description" content="Submodule that is used to hold the board state." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>katan_ai.katan.board</code></h1>
+</header>
+<section id="section-intro">
+<p>Submodule that is used to hold the board state.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Submodule that is used to hold the board state.&#34;&#34;&#34;
+
+from .beginner_board import BeginnerBoard
+from .board import Board
+from .board_renderer import BoardRenderer
+from .building import Building, PathBuilding
+from .building_type import BuildingType
+from .coords import Coords
+from .harbor import Harbor
+from .hex import Hex
+from .hex_type import HexType
+from .intersection import Intersection
+from .intersection_building import IntersectionBuilding
+from .path import Path
+from .random_board import RandomBoard
+
+__all__ = [
+    &#34;Board&#34;,
+    &#34;BoardRenderer&#34;,
+    &#34;BeginnerBoard&#34;,
+    &#34;Building&#34;,
+    &#34;PathBuilding&#34;,
+    &#34;IntersectionBuilding&#34;,
+    &#34;BuildingType&#34;,
+    &#34;Coords&#34;,
+    &#34;Harbor&#34;,
+    &#34;Hex&#34;,
+    &#34;HexType&#34;,
+    &#34;Intersection&#34;,
+    &#34;Path&#34;,
+    &#34;RandomBoard&#34;,
+]</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="katan_ai.katan.board.beginner_board" href="beginner_board.html">katan_ai.katan.board.beginner_board</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.board" href="board.html">katan_ai.katan.board.board</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.board_renderer" href="board_renderer.html">katan_ai.katan.board.board_renderer</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.building" href="building.html">katan_ai.katan.board.building</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.building_type" href="building_type.html">katan_ai.katan.board.building_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.coords" href="coords.html">katan_ai.katan.board.coords</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.harbor" href="harbor.html">katan_ai.katan.board.harbor</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.hex" href="hex.html">katan_ai.katan.board.hex</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.hex_type" href="hex_type.html">katan_ai.katan.board.hex_type</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.intersection" href="intersection.html">katan_ai.katan.board.intersection</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.intersection_building" href="intersection_building.html">katan_ai.katan.board.intersection_building</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.path" href="path.html">katan_ai.katan.board.path</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="katan_ai.katan.board.random_board" href="random_board.html">katan_ai.katan.board.random_board</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="katan_ai.katan.board.BeginnerBoard"><code class="flex name class">
+<span>class <span class="ident">BeginnerBoard</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>The beginner board, as outlined in the Catan rules.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BeginnerBoard(Board):
+    &#34;&#34;&#34;The beginner board, as outlined in the Catan rules.&#34;&#34;&#34;
+
+    def __init__(self):
+        super().__init__(
+            hexes={
+                Hex(Coords(4, -2), HexType.MOUNTAINS, 10),
+                Hex(Coords(3, 0), HexType.PASTURE, 2),
+                Hex(Coords(2, 2), HexType.FOREST, 9),
+                Hex(Coords(3, -3), HexType.FIELDS, 12),
+                Hex(Coords(2, -1), HexType.HILLS, 6),
+                Hex(Coords(1, 1), HexType.PASTURE, 4),
+                Hex(Coords(0, 3), HexType.HILLS, 10),
+                Hex(Coords(2, -4), HexType.FIELDS, 9),
+                Hex(Coords(1, -2), HexType.FOREST, 11),
+                Hex(Coords(0, 0), HexType.DESERT),
+                Hex(Coords(-1, 2), HexType.FOREST, 3),
+                Hex(Coords(-2, 4), HexType.MOUNTAINS, 8),
+                Hex(Coords(0, -3), HexType.FOREST, 8),
+                Hex(Coords(-1, -1), HexType.MOUNTAINS, 3),
+                Hex(Coords(-2, 1), HexType.FIELDS, 4),
+                Hex(Coords(-3, 3), HexType.PASTURE, 5),
+                Hex(Coords(-2, -2), HexType.HILLS, 5),
+                Hex(Coords(-3, 0), HexType.FIELDS, 6),
+                Hex(Coords(-4, 2), HexType.PASTURE, 11),
+            },
+            harbors=[
+                Harbor(
+                    path_coords={Coords(4, 0), Coords(3, 1)}, resource=Resource.GRAIN
+                ),
+                Harbor(path_coords={Coords(1, 3), Coords(0, 4)}, resource=Resource.ORE),
+                Harbor(path_coords={Coords(-2, 5), Coords(-3, 5)}, resource=None),
+                Harbor(
+                    path_coords={Coords(-4, 3), Coords(-4, 4)}, resource=Resource.WOOL
+                ),
+                Harbor(path_coords={Coords(-4, 0), Coords(-4, 1)}, resource=None),
+                Harbor(path_coords={Coords(-2, -3), Coords(-3, -2)}, resource=None),
+                Harbor(
+                    path_coords={Coords(2, -5), Coords(1, -4)}, resource=Resource.BRICK
+                ),
+                Harbor(
+                    path_coords={Coords(3, -4), Coords(4, -4)}, resource=Resource.LUMBER
+                ),
+                Harbor(path_coords={Coords(5, -3), Coords(5, -2)}, resource=None),
+            ],
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="katan_ai.katan.board.board.Board" href="board.html#katan_ai.katan.board.board.Board">Board</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="katan_ai.katan.board.board.Board" href="board.html#katan_ai.katan.board.board.Board">Board</a></b></code>:
+<ul class="hlist">
+<li><code><a title="katan_ai.katan.board.board.Board.add_intersection_building" href="board.html#katan_ai.katan.board.board.Board.add_intersection_building">add_intersection_building</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.add_path_building" href="board.html#katan_ai.katan.board.board.Board.add_path_building">add_path_building</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.assert_valid_city_coords" href="board.html#katan_ai.katan.board.board.Board.assert_valid_city_coords">assert_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.assert_valid_road_coords" href="board.html#katan_ai.katan.board.board.Board.assert_valid_road_coords">assert_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.assert_valid_settlement_coords" href="board.html#katan_ai.katan.board.board.Board.assert_valid_settlement_coords">assert_valid_settlement_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.calculate_player_longest_road" href="board.html#katan_ai.katan.board.board.Board.calculate_player_longest_road">calculate_player_longest_road</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_connected_hex_intersections" href="board.html#katan_ai.katan.board.board.Board.get_connected_hex_intersections">get_connected_hex_intersections</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_hex_resources_for_intersection" href="board.html#katan_ai.katan.board.board.Board.get_hex_resources_for_intersection">get_hex_resources_for_intersection</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_hexes_connected_to_intersection" href="board.html#katan_ai.katan.board.board.Board.get_hexes_connected_to_intersection">get_hexes_connected_to_intersection</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_intersection_connected_intersections" href="board.html#katan_ai.katan.board.board.Board.get_intersection_connected_intersections">get_intersection_connected_intersections</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_paths_for_intersection_coords" href="board.html#katan_ai.katan.board.board.Board.get_paths_for_intersection_coords">get_paths_for_intersection_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_players_on_hex" href="board.html#katan_ai.katan.board.board.Board.get_players_on_hex">get_players_on_hex</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_valid_city_coords" href="board.html#katan_ai.katan.board.board.Board.get_valid_city_coords">get_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_valid_road_coords" href="board.html#katan_ai.katan.board.board.Board.get_valid_road_coords">get_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_valid_settlement_coords" href="board.html#katan_ai.katan.board.board.Board.get_valid_settlement_coords">get_valid_settlement_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_yield_for_roll" href="board.html#katan_ai.katan.board.board.Board.get_yield_for_roll">get_yield_for_roll</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.is_valid_city_coords" href="board.html#katan_ai.katan.board.board.Board.is_valid_city_coords">is_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.is_valid_hex_coords" href="board.html#katan_ai.katan.board.board.Board.is_valid_hex_coords">is_valid_hex_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.is_valid_road_coords" href="board.html#katan_ai.katan.board.board.Board.is_valid_road_coords">is_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.is_valid_settlement_coords" href="board.html#katan_ai.katan.board.board.Board.is_valid_settlement_coords">is_valid_settlement_coords</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="katan_ai.katan.board.Board"><code class="flex name class">
+<span>class <span class="ident">Board</span></span>
+<span>(</span><span>hexes: Set[<a title="katan_ai.katan.board.hex.Hex" href="hex.html#katan_ai.katan.board.hex.Hex">Hex</a>], harbors: Set[<a title="katan_ai.katan.board.harbor.Harbor" href="harbor.html#katan_ai.katan.board.harbor.Harbor">Harbor</a>] = set(), robber: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a> = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An interface for holding the state of Catan boards.</p>
+<p>Uses a triangular grid to hold the tiles, intersections and
+paths. The Board constructor will automatically
+generate the intersections and paths from a dict of hexes,
+assuming all the hexes tile correctly.</p>
+<h2 id="args">Args</h2>
+<p>hexes:
+The hexes on the board, keyed by their coordinates
+harbors:
+The harbors on the board
+robber:
+The initial coordinates of the robber. If None, then will automatically place the robber on the first
+desert hex it can find, and raise an error if there are non</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt>hexes (Dict[Coord, Hex]):</dt>
+<dt>The hexes on this catan board, keyed by their coordinates</dt>
+<dt><strong><code>intersections</code></strong></dt>
+<dd>(Dict[Coords, Intersection]):
+The intersections on the board, keyed by their coordinates</dd>
+<dt>paths (Dict[frozenset[Coords], Path]):</dt>
+<dt>The paths on the board, keyed by the coordinates of the two intersections they connect</dt>
+<dt>harbors (Dict[frozenset[Coords], Harbor]):</dt>
+<dt>The harbors on the board, keyed by the coords of the path they are attached to</dt>
+<dt><strong><code>robber</code></strong> :&ensp;<code>Set[<a title="katan_ai.katan.board.Coords" href="#katan_ai.katan.board.Coords">Coords</a>]</code></dt>
+<dd>The location of the robber</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Board:
+    &#34;&#34;&#34;An interface for holding the state of Catan boards.
+
+    Uses a triangular grid to hold the tiles, intersections and
+    paths. The Board constructor will automatically
+    generate the intersections and paths from a dict of hexes,
+    assuming all the hexes tile correctly.
+
+    Args:
+        hexes:
+            The hexes on the board, keyed by their coordinates
+        harbors:
+            The harbors on the board
+        robber:
+            The initial coordinates of the robber. If None, then will automatically place the robber on the first
+            desert hex it can find, and raise an error if there are non
+
+    Attributes:
+        hexes (Dict[Coord, Hex]):
+            The hexes on this catan board, keyed by their coordinates
+        intersections: (Dict[Coords, Intersection]):
+            The intersections on the board, keyed by their coordinates
+        paths (Dict[frozenset[Coords], Path]):
+            The paths on the board, keyed by the coordinates of the two intersections they connect
+        harbors (Dict[frozenset[Coords], Harbor]):
+            The harbors on the board, keyed by the coords of the path they are attached to
+        robber (Set[Coords]): The location of the robber
+    &#34;&#34;&#34;
+
+    def __init__(
+        self, hexes: Set[Hex], harbors: Set[Harbor] = set(), robber: Coords = None
+    ):
+        self.hexes: Dict[Coords, Hex] = dict(zip((h.coords for h in hexes), hexes))
+        self.harbors = {frozenset(h.path_coords): h for h in harbors}
+        # Position the robber on the desert
+        if robber:
+            self.robber = robber
+        else:
+            self.robber = [
+                h.coords for h in self.hexes.values() if h.hex_type == HexType.DESERT
+            ][0]
+        # Gather the points around each hex into a set
+        intersection_coords = set(
+            map(
+                lambda x: x[0] + x[1],
+                list(product(*[self.hexes.keys(), Hex.CONNECTED_CORNER_OFFSETS])),
+            )
+        )
+        # Add the intersections to self.intersections
+        self.intersections = {}
+        for coords in intersection_coords:
+            self.intersections[coords] = Intersection(coords)
+        # Now add all the edges in between the intersections we just added
+        self.paths = {}
+        for c in self.intersections:
+            for offset in Intersection.CONNECTED_CORNER_OFFSETS:
+                coord = c + offset
+                if coord in self.intersections:
+                    self.paths[frozenset([c, c + offset])] = Path(set([c, c + offset]))
+
+    def add_path_building(
+        self,
+        player: Player,
+        building_type: BuildingType,
+        path_coords: Set[Coords],
+        ensure_connected: Optional[bool] = True,
+    ):
+        &#34;&#34;&#34;Add an path building to the board.
+
+        Do not check if the player has enough resources, or any other checks other than the building&#39;s location being valid.
+
+        Args:
+            player: The player adding the building
+            building_type: The building_type of the building being added
+            path_coords: The coordinates the path to build the building on (i.e. the coordinates of the two intersections the path connects)
+            ensure_connected: Whether to ensure that the path building is connected to another building. Defaults to True
+        Raises:
+            ValueError: If the path_coords are not valid
+            CoordsBlockedError: If there is already a building on the path
+            NotConnectedError: If check_connection is true and the building is not connected to anything
+        &#34;&#34;&#34;
+        for c in path_coords:
+            if c not in self.intersections.keys():
+                raise ValueError(
+                    &#34;Invalid path: Paths must connect two intersections on the board. %s is not a intersection&#34;
+                    % c
+                )
+
+        if frozenset(path_coords) not in self.paths.keys():
+            raise ValueError(&#34;Invalid path: Path does not exist&#34;)
+
+        if building_type is BuildingType.ROAD:
+            self.assert_valid_road_coords(player, path_coords, ensure_connected)
+
+        # Add the building
+        self.paths[frozenset(path_coords)].building = PathBuilding(
+            player, path_coords=path_coords, building_type=building_type
+        )
+
+    def assert_valid_road_coords(
+        self,
+        player: Player,
+        path_coords: Set[Coords],
+        ensure_connected: Optional[bool] = True,
+    ):
+        &#34;&#34;&#34;Assert that a given edge is a valid place for the player to build a road.
+
+        Args:
+            player: The player
+            path_coords: The coordinates of the two intersections connected by the path
+            ensure_connected: Whether to assert that the path is connected to the player&#39;s existing roads or settlements
+        &#34;&#34;&#34;
+        path: Path = self.paths[frozenset(path_coords)]
+        if path.building is not None:
+            raise CoordsBlockedError(&#34;There is already a building on this path&#34;)
+
+        if ensure_connected:
+            # Check if it&#39;s connected to a intersection building
+            valid_buildings = set(
+                filter(
+                    lambda b: b is not None and b.owner is player,
+                    map(lambda c: self.intersections[c].building, path_coords),
+                )
+            )
+            if len(valid_buildings) == 0:
+                # Check if it&#39;s connected to another path building
+                paths_connected = set()
+                for coords in path_coords:
+                    for c in self.get_intersection_connected_intersections(
+                        self.intersections[coords]
+                    ):
+                        connected_path = self.paths[frozenset({coords, c.coords})]
+                        # Check if there is an path building (i.e. a road) to be connected to here
+                        if (
+                            connected_path.building is not None
+                            and connected_path.building.owner is player
+                        ):
+                            # Checks that we aren&#39;t going through an enemy building to be connected
+                            building = self.intersections[coords].building
+                            if building is None or building.owner is player:
+                                paths_connected.add(path)
+
+                if len(paths_connected) == 0:
+                    raise NotConnectedError(
+                        &#34;Road is not connected to any other building&#34;
+                    )
+
+    def add_intersection_building(
+        self,
+        player: Player,
+        coords: Coords,
+        building_type: BuildingType,
+        ensure_connected: Optional[bool] = True,
+    ):
+        &#34;&#34;&#34;Add an intersection building to the board.
+
+        Args:
+            player: The player who owns the settlement
+            coords: The coords to put the building
+            ensure_connected: Whether to ensure that the building is connected to the player&#39;s roads. Defaults to True
+        Raises:
+            InvalidCoordsError: If coords is not a valid intersection
+            TooCloseToBuildingError: If the building is too close to another building
+            PositionAlreadyTakenError: If the position is already taken
+        &#34;&#34;&#34;
+        if building_type == BuildingType.SETTLEMENT:
+            self.assert_valid_settlement_coords(coords, player, ensure_connected)
+        elif building_type == BuildingType.CITY:
+            self.assert_valid_city_coords(player=player, coords=coords)
+        else:
+            raise ValueError(
+                &#34;Invalid building type passed to Board.add_intersection_building, received %s&#34;
+                % building_type
+            )
+
+        self.intersections[coords].building = IntersectionBuilding(
+            player, building_type, coords
+        )
+
+        # Connect the player to a harbor if they can
+        for harbor in self.harbors.values():
+            if coords in harbor.path_coords and harbor not in player.connected_harbors:
+                player.connected_harbors.add(harbor)
+
+    def assert_valid_settlement_coords(
+        self, coords: Coords, player: Player, ensure_connected: Optional[bool]
+    ) -&gt; None:
+        &#34;&#34;&#34;Check whether the coordinates given are a valid place to build a settlement.
+
+        Does not return anything, but raises an error if the coordinates are not valid.
+
+        Args:
+            coords: The coordinates to check
+            player: The player building the settlement
+            ensure_connected: Whether the check if the settlement will be connected by road
+        Raises:
+            TooCloseToBuildingError: If the building is too close to another building
+            PositionAlreadyTakenError: If the position is already taken
+            NotConnectedError: If `check_connection` is `True` and the settlement is not connected
+        &#34;&#34;&#34;
+        # Check that the coords are referencing a intersection
+        if coords not in self.intersections:
+            raise InvalidCoordsError(&#34;coords must be the coordinates of a intersection&#34;)
+        # Check that the intersection is empty
+        if self.intersections[coords].building is not None:
+            raise CoordsBlockedError(&#34;There is already a building on this intersection&#34;)
+        # Check that the surrounding intersections are empty
+        connected_intersections: Set[
+            Intersection
+        ] = self.get_intersection_connected_intersections(self.intersections[coords])
+        if (
+            len(set(filter(lambda c: c.building is not None, connected_intersections)))
+            &gt; 0
+        ):
+            raise TooCloseToBuildingError(
+                &#34;There is a building that is not at least 2 paths away from this position&#34;
+            )
+        if ensure_connected:
+            path_coords = set(
+                map(lambda c: frozenset({coords, c.coords}), connected_intersections)
+            )
+            paths = set(map(lambda e: self.paths[e], path_coords))
+            if (
+                len(
+                    set(
+                        filter(
+                            lambda path: path.building is not None
+                            and path.building.owner is player,
+                            paths,
+                        )
+                    )
+                )
+                == 0
+            ):
+                raise NotConnectedError(&#34;The settlement must be connected by road&#34;)
+
+    def assert_valid_city_coords(self, player: Player, coords: Coords):
+        &#34;&#34;&#34;Check whether the coordinates given are a valid place to build a city by the player given.
+
+        Args:
+            player: The player building the city
+            coords: Where to build the city
+        &#34;&#34;&#34;
+        # Check the coords are a intersection
+        if coords not in self.intersections.keys():
+            raise InvalidCoordsError(&#34;coords must be the coordinates of a intersection&#34;)
+        # Check that a settlement owned by player exists here
+        if (
+            self.intersections[coords].building is None
+            or self.intersections[coords].building.owner is not player
+            or self.intersections[coords].building.building_type
+            is not BuildingType.SETTLEMENT
+        ):
+            raise RequiresSettlementError(
+                &#34;You must update an existing settlement owned by the player into a city&#34;
+            )
+
+    def is_valid_settlement_coords(
+        self, player: Player, coords: Coords, ensure_connected: Optional[bool]
+    ) -&gt; bool:
+        &#34;&#34;&#34;Check whether the given coordinates are a valid place for the player to build a settlement.
+
+        Args:
+            player: The player
+            coords: The coordinates to check
+            ensure_connected: Whether to ensure that the settlement will be connected to the player&#39;s roads
+        Returns:
+            Whether the coordinates are a valid settlement location for the player
+        &#34;&#34;&#34;
+        try:
+            self.assert_valid_settlement_coords(
+                player=player, coords=coords, ensure_connected=ensure_connected
+            )
+        except:  # noqa: E722
+            return False
+        return True
+
+    def is_valid_city_coords(self, player: Player, coords: Coords) -&gt; bool:
+        &#34;&#34;&#34;Check whether the coordinates given are valid city coordinates.
+
+        Args:
+            player: The player
+            coords: The coordinates to check
+        Returns:
+            Whether the coords are a valid place for the player to build a city
+        &#34;&#34;&#34;
+        try:
+            self.assert_valid_city_coords(player=player, coords=coords)
+        except:  # noqa: E722
+            return False
+        return True
+
+    def is_valid_road_coords(
+        self,
+        player: Player,
+        path_coords: Set[Coords],
+        ensure_connected: Optional[bool] = True,
+    ) -&gt; bool:
+        &#34;&#34;&#34;Check whether the path coordinates given are valid road coordinate for the player given.
+
+        Args:
+            player: The player
+            path_coords: The coordinates of the path
+            ensure_connected: Whether to ensure that the road is connected to the player&#39;s existing roads/buildings. Defaults to True
+        Returns:
+            Whether the player can build a road on this path
+        &#34;&#34;&#34;
+        try:
+            self.assert_valid_road_coords(
+                player, path_coords, ensure_connected=ensure_connected
+            )
+        except:  # noqa: E722
+            return False
+        return True
+
+    def get_valid_settlement_coords(
+        self, player: Player, ensure_connected: Optional[bool] = True
+    ) -&gt; Set[Coords]:
+        &#34;&#34;&#34;Get all the valid settlement coordinates for the player to build a settlement.
+
+        Args:
+            player: The player to check for valid settlement coordinates
+            ensure_connected: Whether to ensure the coordinates are connected to the player&#39;s roads
+        Returns:
+            The coordinates of all the valid settlement intersections
+        &#34;&#34;&#34;
+        return set(
+            [
+                i
+                for i in self.intersections.keys()
+                if self.is_valid_settlement_coords(player, i, ensure_connected)
+            ]
+        )
+
+    def get_valid_city_coords(self, player: Player) -&gt; Set[Coords]:
+        &#34;&#34;&#34;Get all the valid city coordinates for the player to build a city.
+
+        Args:
+            player (Player): The player building the city
+        Returns
+            The coordinates of all the valid city locations
+        &#34;&#34;&#34;
+        return set(
+            [
+                i
+                for i in self.intersections.keys()
+                if self.is_valid_city_coords(player, i)
+            ]
+        )
+
+    def get_valid_road_coords(
+        self,
+        player: Player,
+        ensure_connected: Optional[bool] = True,
+        connected_intersection: Optional[Coords] = None,
+    ) -&gt; Set[FrozenSet[Coords]]:
+        &#34;&#34;&#34;Get all the valid coordinates for the player to build a road.
+
+        Args:
+            player: The player building the road
+            ensure_connected:
+                Whether to only return the path coordinates that are connected to the player&#39;s existing roads/settlements. Defaults to True
+            connected_intersection: The coords of an intersection that the potential road must be attached to. Defaults to None
+        Returns:
+            The coordinates of all the paths where the player can build a road.
+        &#34;&#34;&#34;
+        to_return = set()
+        for path_coords in self.paths.keys():
+            if self.is_valid_road_coords(
+                player=player,
+                ensure_connected=ensure_connected,
+                path_coords=path_coords,
+            ):
+                if not connected_intersection or connected_intersection in path_coords:
+                    to_return.add(path_coords)
+
+        return to_return
+
+    def get_intersection_connected_intersections(
+        self, intersection: Intersection
+    ) -&gt; Set[Intersection]:
+        &#34;&#34;&#34;Get all the intersections connected to the intersection given by an path.
+
+        Args:
+            intersection: The intersection to get the connected intersections for
+
+        Returns:
+            The intersections that are connected to the intersection given
+        &#34;&#34;&#34;
+        connected = set()
+        for c in Intersection.CONNECTED_CORNER_OFFSETS:
+            if c + intersection.coords in self.intersections.keys():
+                connected.add(self.intersections[c + intersection.coords])
+        return connected
+
+    def get_connected_hex_intersections(self, hex: Hex) -&gt; Set[Intersection]:
+        &#34;&#34;&#34;Get all of the intersections that are connected to the hex.
+
+        Args:
+            hex: The hex
+
+        Returns:
+            All 6 intersections that are around this hex
+        &#34;&#34;&#34;
+        return set(
+            map(
+                lambda offset: self.intersections[hex.coords + offset],
+                Hex.CONNECTED_CORNER_OFFSETS,
+            )
+        )
+
+    def get_hexes_connected_to_intersection(
+        self, intersection_coords: Coords
+    ) -&gt; Set[Coords]:
+        &#34;&#34;&#34;Get all the hexes&#39; coordinates that are connected to the intersection with the coordinates provided.
+
+        Args:
+            intersection_coords: The coords of an intersection
+        Returns:
+            The hexes connected to the intersection
+        &#34;&#34;&#34;
+        return set(
+            [
+                intersection_coords + c
+                for c in Hex.CONNECTED_CORNER_OFFSETS
+                if intersection_coords + c in self.hexes
+            ]
+        )
+
+    def get_yield_for_roll(self, roll: int) -&gt; Dict[Player, RollYield]:
+        &#34;&#34;&#34;Calculate the resources given out for a particular roll.
+
+        Args:
+            roll: The number rolled
+        Returns:
+            The RollYield object containing the information for what each player gets, keyed by the player
+        &#34;&#34;&#34;
+        total_yield: Dict[Player, RollYield] = {}
+        for hex in self.hexes.values():
+            if hex.token_number == roll and self.robber != hex.coords:
+                resource = hex.hex_type.get_resource()
+                # Check around the hex for any settlements/cities
+                for intersection in self.get_connected_hex_intersections(hex):
+                    if intersection.building is not None:
+                        owner = intersection.building.owner
+                        if owner not in total_yield.keys():
+                            total_yield[owner] = RollYield()
+                        amount = (
+                            2
+                            if intersection.building.building_type is BuildingType.CITY
+                            else 1
+                        )
+                        total_yield[owner].add_yield(
+                            resource,
+                            amount,
+                            source=RollYieldSource(
+                                resource,
+                                amount,
+                                intersection.building,
+                                hex,
+                            ),
+                        )
+        return total_yield
+
+    def is_valid_hex_coords(self, coords: Coords) -&gt; bool:
+        &#34;&#34;&#34;Check whether the coordinates given are valid hex coordinates.
+
+        Args:
+            coords: The coordinates
+        Returns:
+            Whether there is a hex at those coordinates
+        &#34;&#34;&#34;
+        return len(set(filter(lambda x: x == coords, self.hexes.keys()))) != 0
+
+    def calculate_player_longest_road(self, player: Player) -&gt; int:
+        &#34;&#34;&#34;Calculate the length of the longest road segment for the player given.
+
+        Args:
+            player: The player to calculate the longest road for
+        Returns:
+            The length of the ongest road segment
+        &#34;&#34;&#34;
+        paths = [
+            e
+            for e in self.paths.values()
+            if e.building is not None and e.building.owner is player
+        ]
+        starting = [(c, [e]) for e in paths for c in e.path_coords]
+        if len(starting) == 0:
+            return 0
+
+        current_longest = starting[0][1]
+
+        potential = starting
+        while len(potential) &gt; 0:
+            current = potential.pop(0)
+            building = self.intersections[current[0]].building
+            if building is not None and building.owner is not player:
+                continue
+            for path in self.get_paths_for_intersection_coords(current[0]):
+                if (
+                    path not in current[1]
+                    and path.building is not None
+                    and path.building.owner is player
+                ):
+                    other_intersection = path.other_intersection(current[0])
+                    potential.append((other_intersection, [path] + current[1]))
+                    if len(current[1]) + 1 &gt; len(current_longest):
+                        current_longest = [path] + current[1]
+
+        return len(current_longest)
+
+    def get_paths_for_intersection_coords(self, coords: Coords) -&gt; Set[Path]:
+        &#34;&#34;&#34;Get all the paths who that connected to the intersection given.
+
+        Args:
+            coords: The coordinates of the intersection
+        Returns:
+            A set of the paths attached to that intersection
+        &#34;&#34;&#34;
+        return set(filter(lambda e: coords in e.path_coords, self.paths.values()))
+
+    def get_hex_resources_for_intersection(self, coords: Coords) -&gt; Dict[Resource, int]:
+        &#34;&#34;&#34;Get the associated resources for the hexes around the intersection at the coords given.
+
+        Args:
+            coords: The coordinates of an intersection
+        Returns:
+            The amounts of resources from the hexes around this intersection
+        &#34;&#34;&#34;
+        resources = [
+            self.hexes[h].hex_type.get_resource()
+            for h in self.get_hexes_connected_to_intersection(coords)
+        ]
+        return {res: resources.count(res) for res in resources if res is not None}
+
+    def get_players_on_hex(self, coords: Coords) -&gt; Set[Player]:
+        &#34;&#34;&#34;Get all the players who have a building on the edge of the given hex.
+
+        Args:
+            coords: The coords of the hex
+        Returns:
+            The players with a building on the edge of the hex
+        &#34;&#34;&#34;
+        return set(
+            [
+                i.building.owner
+                for i in self.get_connected_hex_intersections(self.hexes[coords])
+                if i.building is not None
+            ]
+        )
+
+    def __str__(self):
+        from .board_renderer import BoardRenderer
+
+        return BoardRenderer(self).get_board_as_string()
+
+    def __repl__(self):
+        return self.__str__()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="katan_ai.katan.board.beginner_board.BeginnerBoard" href="beginner_board.html#katan_ai.katan.board.beginner_board.BeginnerBoard">BeginnerBoard</a></li>
+<li><a title="katan_ai.katan.board.random_board.RandomBoard" href="random_board.html#katan_ai.katan.board.random_board.RandomBoard">RandomBoard</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="katan_ai.katan.board.Board.add_intersection_building"><code class="name flex">
+<span>def <span class="ident">add_intersection_building</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>, building_type: <a title="katan_ai.katan.board.building_type.BuildingType" href="building_type.html#katan_ai.katan.board.building_type.BuildingType">BuildingType</a>, ensure_connected: Optional[bool] = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add an intersection building to the board.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player who owns the settlement</dd>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coords to put the building</dd>
+<dt><strong><code>ensure_connected</code></strong></dt>
+<dd>Whether to ensure that the building is connected to the player's roads. Defaults to True</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>InvalidCoordsError</code></dt>
+<dd>If coords is not a valid intersection</dd>
+<dt><code>TooCloseToBuildingError</code></dt>
+<dd>If the building is too close to another building</dd>
+<dt><code>PositionAlreadyTakenError</code></dt>
+<dd>If the position is already taken</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_intersection_building(
+    self,
+    player: Player,
+    coords: Coords,
+    building_type: BuildingType,
+    ensure_connected: Optional[bool] = True,
+):
+    &#34;&#34;&#34;Add an intersection building to the board.
+
+    Args:
+        player: The player who owns the settlement
+        coords: The coords to put the building
+        ensure_connected: Whether to ensure that the building is connected to the player&#39;s roads. Defaults to True
+    Raises:
+        InvalidCoordsError: If coords is not a valid intersection
+        TooCloseToBuildingError: If the building is too close to another building
+        PositionAlreadyTakenError: If the position is already taken
+    &#34;&#34;&#34;
+    if building_type == BuildingType.SETTLEMENT:
+        self.assert_valid_settlement_coords(coords, player, ensure_connected)
+    elif building_type == BuildingType.CITY:
+        self.assert_valid_city_coords(player=player, coords=coords)
+    else:
+        raise ValueError(
+            &#34;Invalid building type passed to Board.add_intersection_building, received %s&#34;
+            % building_type
+        )
+
+    self.intersections[coords].building = IntersectionBuilding(
+        player, building_type, coords
+    )
+
+    # Connect the player to a harbor if they can
+    for harbor in self.harbors.values():
+        if coords in harbor.path_coords and harbor not in player.connected_harbors:
+            player.connected_harbors.add(harbor)</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.add_path_building"><code class="name flex">
+<span>def <span class="ident">add_path_building</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, building_type: <a title="katan_ai.katan.board.building_type.BuildingType" href="building_type.html#katan_ai.katan.board.building_type.BuildingType">BuildingType</a>, path_coords: Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>], ensure_connected: Optional[bool] = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add an path building to the board.</p>
+<p>Do not check if the player has enough resources, or any other checks other than the building's location being valid.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player adding the building</dd>
+<dt><strong><code>building_type</code></strong></dt>
+<dd>The building_type of the building being added</dd>
+<dt><strong><code>path_coords</code></strong></dt>
+<dd>The coordinates the path to build the building on (i.e. the coordinates of the two intersections the path connects)</dd>
+<dt><strong><code>ensure_connected</code></strong></dt>
+<dd>Whether to ensure that the path building is connected to another building. Defaults to True</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the path_coords are not valid</dd>
+<dt><code>CoordsBlockedError</code></dt>
+<dd>If there is already a building on the path</dd>
+<dt><code>NotConnectedError</code></dt>
+<dd>If check_connection is true and the building is not connected to anything</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_path_building(
+    self,
+    player: Player,
+    building_type: BuildingType,
+    path_coords: Set[Coords],
+    ensure_connected: Optional[bool] = True,
+):
+    &#34;&#34;&#34;Add an path building to the board.
+
+    Do not check if the player has enough resources, or any other checks other than the building&#39;s location being valid.
+
+    Args:
+        player: The player adding the building
+        building_type: The building_type of the building being added
+        path_coords: The coordinates the path to build the building on (i.e. the coordinates of the two intersections the path connects)
+        ensure_connected: Whether to ensure that the path building is connected to another building. Defaults to True
+    Raises:
+        ValueError: If the path_coords are not valid
+        CoordsBlockedError: If there is already a building on the path
+        NotConnectedError: If check_connection is true and the building is not connected to anything
+    &#34;&#34;&#34;
+    for c in path_coords:
+        if c not in self.intersections.keys():
+            raise ValueError(
+                &#34;Invalid path: Paths must connect two intersections on the board. %s is not a intersection&#34;
+                % c
+            )
+
+    if frozenset(path_coords) not in self.paths.keys():
+        raise ValueError(&#34;Invalid path: Path does not exist&#34;)
+
+    if building_type is BuildingType.ROAD:
+        self.assert_valid_road_coords(player, path_coords, ensure_connected)
+
+    # Add the building
+    self.paths[frozenset(path_coords)].building = PathBuilding(
+        player, path_coords=path_coords, building_type=building_type
+    )</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.assert_valid_city_coords"><code class="name flex">
+<span>def <span class="ident">assert_valid_city_coords</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check whether the coordinates given are a valid place to build a city by the player given.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player building the city</dd>
+<dt><strong><code>coords</code></strong></dt>
+<dd>Where to build the city</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def assert_valid_city_coords(self, player: Player, coords: Coords):
+    &#34;&#34;&#34;Check whether the coordinates given are a valid place to build a city by the player given.
+
+    Args:
+        player: The player building the city
+        coords: Where to build the city
+    &#34;&#34;&#34;
+    # Check the coords are a intersection
+    if coords not in self.intersections.keys():
+        raise InvalidCoordsError(&#34;coords must be the coordinates of a intersection&#34;)
+    # Check that a settlement owned by player exists here
+    if (
+        self.intersections[coords].building is None
+        or self.intersections[coords].building.owner is not player
+        or self.intersections[coords].building.building_type
+        is not BuildingType.SETTLEMENT
+    ):
+        raise RequiresSettlementError(
+            &#34;You must update an existing settlement owned by the player into a city&#34;
+        )</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.assert_valid_road_coords"><code class="name flex">
+<span>def <span class="ident">assert_valid_road_coords</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, path_coords: Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>], ensure_connected: Optional[bool] = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Assert that a given edge is a valid place for the player to build a road.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player</dd>
+<dt><strong><code>path_coords</code></strong></dt>
+<dd>The coordinates of the two intersections connected by the path</dd>
+<dt><strong><code>ensure_connected</code></strong></dt>
+<dd>Whether to assert that the path is connected to the player's existing roads or settlements</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def assert_valid_road_coords(
+    self,
+    player: Player,
+    path_coords: Set[Coords],
+    ensure_connected: Optional[bool] = True,
+):
+    &#34;&#34;&#34;Assert that a given edge is a valid place for the player to build a road.
+
+    Args:
+        player: The player
+        path_coords: The coordinates of the two intersections connected by the path
+        ensure_connected: Whether to assert that the path is connected to the player&#39;s existing roads or settlements
+    &#34;&#34;&#34;
+    path: Path = self.paths[frozenset(path_coords)]
+    if path.building is not None:
+        raise CoordsBlockedError(&#34;There is already a building on this path&#34;)
+
+    if ensure_connected:
+        # Check if it&#39;s connected to a intersection building
+        valid_buildings = set(
+            filter(
+                lambda b: b is not None and b.owner is player,
+                map(lambda c: self.intersections[c].building, path_coords),
+            )
+        )
+        if len(valid_buildings) == 0:
+            # Check if it&#39;s connected to another path building
+            paths_connected = set()
+            for coords in path_coords:
+                for c in self.get_intersection_connected_intersections(
+                    self.intersections[coords]
+                ):
+                    connected_path = self.paths[frozenset({coords, c.coords})]
+                    # Check if there is an path building (i.e. a road) to be connected to here
+                    if (
+                        connected_path.building is not None
+                        and connected_path.building.owner is player
+                    ):
+                        # Checks that we aren&#39;t going through an enemy building to be connected
+                        building = self.intersections[coords].building
+                        if building is None or building.owner is player:
+                            paths_connected.add(path)
+
+            if len(paths_connected) == 0:
+                raise NotConnectedError(
+                    &#34;Road is not connected to any other building&#34;
+                )</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.assert_valid_settlement_coords"><code class="name flex">
+<span>def <span class="ident">assert_valid_settlement_coords</span></span>(<span>self, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, ensure_connected: Optional[bool]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check whether the coordinates given are a valid place to build a settlement.</p>
+<p>Does not return anything, but raises an error if the coordinates are not valid.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coordinates to check</dd>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player building the settlement</dd>
+<dt><strong><code>ensure_connected</code></strong></dt>
+<dd>Whether the check if the settlement will be connected by road</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>TooCloseToBuildingError</code></dt>
+<dd>If the building is too close to another building</dd>
+<dt><code>PositionAlreadyTakenError</code></dt>
+<dd>If the position is already taken</dd>
+<dt><code>NotConnectedError</code></dt>
+<dd>If <code>check_connection</code> is <code>True</code> and the settlement is not connected</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def assert_valid_settlement_coords(
+    self, coords: Coords, player: Player, ensure_connected: Optional[bool]
+) -&gt; None:
+    &#34;&#34;&#34;Check whether the coordinates given are a valid place to build a settlement.
+
+    Does not return anything, but raises an error if the coordinates are not valid.
+
+    Args:
+        coords: The coordinates to check
+        player: The player building the settlement
+        ensure_connected: Whether the check if the settlement will be connected by road
+    Raises:
+        TooCloseToBuildingError: If the building is too close to another building
+        PositionAlreadyTakenError: If the position is already taken
+        NotConnectedError: If `check_connection` is `True` and the settlement is not connected
+    &#34;&#34;&#34;
+    # Check that the coords are referencing a intersection
+    if coords not in self.intersections:
+        raise InvalidCoordsError(&#34;coords must be the coordinates of a intersection&#34;)
+    # Check that the intersection is empty
+    if self.intersections[coords].building is not None:
+        raise CoordsBlockedError(&#34;There is already a building on this intersection&#34;)
+    # Check that the surrounding intersections are empty
+    connected_intersections: Set[
+        Intersection
+    ] = self.get_intersection_connected_intersections(self.intersections[coords])
+    if (
+        len(set(filter(lambda c: c.building is not None, connected_intersections)))
+        &gt; 0
+    ):
+        raise TooCloseToBuildingError(
+            &#34;There is a building that is not at least 2 paths away from this position&#34;
+        )
+    if ensure_connected:
+        path_coords = set(
+            map(lambda c: frozenset({coords, c.coords}), connected_intersections)
+        )
+        paths = set(map(lambda e: self.paths[e], path_coords))
+        if (
+            len(
+                set(
+                    filter(
+                        lambda path: path.building is not None
+                        and path.building.owner is player,
+                        paths,
+                    )
+                )
+            )
+            == 0
+        ):
+            raise NotConnectedError(&#34;The settlement must be connected by road&#34;)</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.calculate_player_longest_road"><code class="name flex">
+<span>def <span class="ident">calculate_player_longest_road</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate the length of the longest road segment for the player given.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player to calculate the longest road for</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The length of the ongest road segment</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calculate_player_longest_road(self, player: Player) -&gt; int:
+    &#34;&#34;&#34;Calculate the length of the longest road segment for the player given.
+
+    Args:
+        player: The player to calculate the longest road for
+    Returns:
+        The length of the ongest road segment
+    &#34;&#34;&#34;
+    paths = [
+        e
+        for e in self.paths.values()
+        if e.building is not None and e.building.owner is player
+    ]
+    starting = [(c, [e]) for e in paths for c in e.path_coords]
+    if len(starting) == 0:
+        return 0
+
+    current_longest = starting[0][1]
+
+    potential = starting
+    while len(potential) &gt; 0:
+        current = potential.pop(0)
+        building = self.intersections[current[0]].building
+        if building is not None and building.owner is not player:
+            continue
+        for path in self.get_paths_for_intersection_coords(current[0]):
+            if (
+                path not in current[1]
+                and path.building is not None
+                and path.building.owner is player
+            ):
+                other_intersection = path.other_intersection(current[0])
+                potential.append((other_intersection, [path] + current[1]))
+                if len(current[1]) + 1 &gt; len(current_longest):
+                    current_longest = [path] + current[1]
+
+    return len(current_longest)</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_connected_hex_intersections"><code class="name flex">
+<span>def <span class="ident">get_connected_hex_intersections</span></span>(<span>self, hex: <a title="katan_ai.katan.board.hex.Hex" href="hex.html#katan_ai.katan.board.hex.Hex">Hex</a>) ‑> Set[<a title="katan_ai.katan.board.intersection.Intersection" href="intersection.html#katan_ai.katan.board.intersection.Intersection">Intersection</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all of the intersections that are connected to the hex.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>hex</code></strong></dt>
+<dd>The hex</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>All 6 intersections that are around this hex</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_connected_hex_intersections(self, hex: Hex) -&gt; Set[Intersection]:
+    &#34;&#34;&#34;Get all of the intersections that are connected to the hex.
+
+    Args:
+        hex: The hex
+
+    Returns:
+        All 6 intersections that are around this hex
+    &#34;&#34;&#34;
+    return set(
+        map(
+            lambda offset: self.intersections[hex.coords + offset],
+            Hex.CONNECTED_CORNER_OFFSETS,
+        )
+    )</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_hex_resources_for_intersection"><code class="name flex">
+<span>def <span class="ident">get_hex_resources_for_intersection</span></span>(<span>self, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>) ‑> Dict[<a title="katan_ai.katan.resource.Resource" href="../resource.html#katan_ai.katan.resource.Resource">Resource</a>, int]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the associated resources for the hexes around the intersection at the coords given.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coordinates of an intersection</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The amounts of resources from the hexes around this intersection</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hex_resources_for_intersection(self, coords: Coords) -&gt; Dict[Resource, int]:
+    &#34;&#34;&#34;Get the associated resources for the hexes around the intersection at the coords given.
+
+    Args:
+        coords: The coordinates of an intersection
+    Returns:
+        The amounts of resources from the hexes around this intersection
+    &#34;&#34;&#34;
+    resources = [
+        self.hexes[h].hex_type.get_resource()
+        for h in self.get_hexes_connected_to_intersection(coords)
+    ]
+    return {res: resources.count(res) for res in resources if res is not None}</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_hexes_connected_to_intersection"><code class="name flex">
+<span>def <span class="ident">get_hexes_connected_to_intersection</span></span>(<span>self, intersection_coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>) ‑> Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the hexes' coordinates that are connected to the intersection with the coordinates provided.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>intersection_coords</code></strong></dt>
+<dd>The coords of an intersection</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The hexes connected to the intersection</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hexes_connected_to_intersection(
+    self, intersection_coords: Coords
+) -&gt; Set[Coords]:
+    &#34;&#34;&#34;Get all the hexes&#39; coordinates that are connected to the intersection with the coordinates provided.
+
+    Args:
+        intersection_coords: The coords of an intersection
+    Returns:
+        The hexes connected to the intersection
+    &#34;&#34;&#34;
+    return set(
+        [
+            intersection_coords + c
+            for c in Hex.CONNECTED_CORNER_OFFSETS
+            if intersection_coords + c in self.hexes
+        ]
+    )</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_intersection_connected_intersections"><code class="name flex">
+<span>def <span class="ident">get_intersection_connected_intersections</span></span>(<span>self, intersection: <a title="katan_ai.katan.board.intersection.Intersection" href="intersection.html#katan_ai.katan.board.intersection.Intersection">Intersection</a>) ‑> Set[<a title="katan_ai.katan.board.intersection.Intersection" href="intersection.html#katan_ai.katan.board.intersection.Intersection">Intersection</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the intersections connected to the intersection given by an path.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>intersection</code></strong></dt>
+<dd>The intersection to get the connected intersections for</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The intersections that are connected to the intersection given</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_intersection_connected_intersections(
+    self, intersection: Intersection
+) -&gt; Set[Intersection]:
+    &#34;&#34;&#34;Get all the intersections connected to the intersection given by an path.
+
+    Args:
+        intersection: The intersection to get the connected intersections for
+
+    Returns:
+        The intersections that are connected to the intersection given
+    &#34;&#34;&#34;
+    connected = set()
+    for c in Intersection.CONNECTED_CORNER_OFFSETS:
+        if c + intersection.coords in self.intersections.keys():
+            connected.add(self.intersections[c + intersection.coords])
+    return connected</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_paths_for_intersection_coords"><code class="name flex">
+<span>def <span class="ident">get_paths_for_intersection_coords</span></span>(<span>self, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>) ‑> Set[<a title="katan_ai.katan.board.path.Path" href="path.html#katan_ai.katan.board.path.Path">Path</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the paths who that connected to the intersection given.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coordinates of the intersection</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A set of the paths attached to that intersection</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_paths_for_intersection_coords(self, coords: Coords) -&gt; Set[Path]:
+    &#34;&#34;&#34;Get all the paths who that connected to the intersection given.
+
+    Args:
+        coords: The coordinates of the intersection
+    Returns:
+        A set of the paths attached to that intersection
+    &#34;&#34;&#34;
+    return set(filter(lambda e: coords in e.path_coords, self.paths.values()))</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_players_on_hex"><code class="name flex">
+<span>def <span class="ident">get_players_on_hex</span></span>(<span>self, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>) ‑> Set[<a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the players who have a building on the edge of the given hex.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coords of the hex</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The players with a building on the edge of the hex</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_players_on_hex(self, coords: Coords) -&gt; Set[Player]:
+    &#34;&#34;&#34;Get all the players who have a building on the edge of the given hex.
+
+    Args:
+        coords: The coords of the hex
+    Returns:
+        The players with a building on the edge of the hex
+    &#34;&#34;&#34;
+    return set(
+        [
+            i.building.owner
+            for i in self.get_connected_hex_intersections(self.hexes[coords])
+            if i.building is not None
+        ]
+    )</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_valid_city_coords"><code class="name flex">
+<span>def <span class="ident">get_valid_city_coords</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>) ‑> Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the valid city coordinates for the player to build a city.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong> :&ensp;<code>Player</code></dt>
+<dd>The player building the city</dd>
+</dl>
+<p>Returns
+The coordinates of all the valid city locations</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_valid_city_coords(self, player: Player) -&gt; Set[Coords]:
+    &#34;&#34;&#34;Get all the valid city coordinates for the player to build a city.
+
+    Args:
+        player (Player): The player building the city
+    Returns
+        The coordinates of all the valid city locations
+    &#34;&#34;&#34;
+    return set(
+        [
+            i
+            for i in self.intersections.keys()
+            if self.is_valid_city_coords(player, i)
+        ]
+    )</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_valid_road_coords"><code class="name flex">
+<span>def <span class="ident">get_valid_road_coords</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, ensure_connected: Optional[bool] = True, connected_intersection: Optional[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>] = None) ‑> Set[FrozenSet[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the valid coordinates for the player to build a road.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player building the road</dd>
+<dt>ensure_connected:</dt>
+<dt>Whether to only return the path coordinates that are connected to the player's existing roads/settlements. Defaults to True</dt>
+<dt><strong><code>connected_intersection</code></strong></dt>
+<dd>The coords of an intersection that the potential road must be attached to. Defaults to None</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The coordinates of all the paths where the player can build a road.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_valid_road_coords(
+    self,
+    player: Player,
+    ensure_connected: Optional[bool] = True,
+    connected_intersection: Optional[Coords] = None,
+) -&gt; Set[FrozenSet[Coords]]:
+    &#34;&#34;&#34;Get all the valid coordinates for the player to build a road.
+
+    Args:
+        player: The player building the road
+        ensure_connected:
+            Whether to only return the path coordinates that are connected to the player&#39;s existing roads/settlements. Defaults to True
+        connected_intersection: The coords of an intersection that the potential road must be attached to. Defaults to None
+    Returns:
+        The coordinates of all the paths where the player can build a road.
+    &#34;&#34;&#34;
+    to_return = set()
+    for path_coords in self.paths.keys():
+        if self.is_valid_road_coords(
+            player=player,
+            ensure_connected=ensure_connected,
+            path_coords=path_coords,
+        ):
+            if not connected_intersection or connected_intersection in path_coords:
+                to_return.add(path_coords)
+
+    return to_return</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_valid_settlement_coords"><code class="name flex">
+<span>def <span class="ident">get_valid_settlement_coords</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, ensure_connected: Optional[bool] = True) ‑> Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get all the valid settlement coordinates for the player to build a settlement.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player to check for valid settlement coordinates</dd>
+<dt><strong><code>ensure_connected</code></strong></dt>
+<dd>Whether to ensure the coordinates are connected to the player's roads</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The coordinates of all the valid settlement intersections</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_valid_settlement_coords(
+    self, player: Player, ensure_connected: Optional[bool] = True
+) -&gt; Set[Coords]:
+    &#34;&#34;&#34;Get all the valid settlement coordinates for the player to build a settlement.
+
+    Args:
+        player: The player to check for valid settlement coordinates
+        ensure_connected: Whether to ensure the coordinates are connected to the player&#39;s roads
+    Returns:
+        The coordinates of all the valid settlement intersections
+    &#34;&#34;&#34;
+    return set(
+        [
+            i
+            for i in self.intersections.keys()
+            if self.is_valid_settlement_coords(player, i, ensure_connected)
+        ]
+    )</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.get_yield_for_roll"><code class="name flex">
+<span>def <span class="ident">get_yield_for_roll</span></span>(<span>self, roll: int) ‑> Dict[<a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, <a title="katan_ai.katan.roll_yield.RollYield" href="../roll_yield.html#katan_ai.katan.roll_yield.RollYield">RollYield</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate the resources given out for a particular roll.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>roll</code></strong></dt>
+<dd>The number rolled</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The RollYield object containing the information for what each player gets, keyed by the player</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_yield_for_roll(self, roll: int) -&gt; Dict[Player, RollYield]:
+    &#34;&#34;&#34;Calculate the resources given out for a particular roll.
+
+    Args:
+        roll: The number rolled
+    Returns:
+        The RollYield object containing the information for what each player gets, keyed by the player
+    &#34;&#34;&#34;
+    total_yield: Dict[Player, RollYield] = {}
+    for hex in self.hexes.values():
+        if hex.token_number == roll and self.robber != hex.coords:
+            resource = hex.hex_type.get_resource()
+            # Check around the hex for any settlements/cities
+            for intersection in self.get_connected_hex_intersections(hex):
+                if intersection.building is not None:
+                    owner = intersection.building.owner
+                    if owner not in total_yield.keys():
+                        total_yield[owner] = RollYield()
+                    amount = (
+                        2
+                        if intersection.building.building_type is BuildingType.CITY
+                        else 1
+                    )
+                    total_yield[owner].add_yield(
+                        resource,
+                        amount,
+                        source=RollYieldSource(
+                            resource,
+                            amount,
+                            intersection.building,
+                            hex,
+                        ),
+                    )
+    return total_yield</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.is_valid_city_coords"><code class="name flex">
+<span>def <span class="ident">is_valid_city_coords</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check whether the coordinates given are valid city coordinates.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player</dd>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coordinates to check</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Whether the coords are a valid place for the player to build a city</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_valid_city_coords(self, player: Player, coords: Coords) -&gt; bool:
+    &#34;&#34;&#34;Check whether the coordinates given are valid city coordinates.
+
+    Args:
+        player: The player
+        coords: The coordinates to check
+    Returns:
+        Whether the coords are a valid place for the player to build a city
+    &#34;&#34;&#34;
+    try:
+        self.assert_valid_city_coords(player=player, coords=coords)
+    except:  # noqa: E722
+        return False
+    return True</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.is_valid_hex_coords"><code class="name flex">
+<span>def <span class="ident">is_valid_hex_coords</span></span>(<span>self, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check whether the coordinates given are valid hex coordinates.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coordinates</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Whether there is a hex at those coordinates</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_valid_hex_coords(self, coords: Coords) -&gt; bool:
+    &#34;&#34;&#34;Check whether the coordinates given are valid hex coordinates.
+
+    Args:
+        coords: The coordinates
+    Returns:
+        Whether there is a hex at those coordinates
+    &#34;&#34;&#34;
+    return len(set(filter(lambda x: x == coords, self.hexes.keys()))) != 0</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.is_valid_road_coords"><code class="name flex">
+<span>def <span class="ident">is_valid_road_coords</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, path_coords: Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>], ensure_connected: Optional[bool] = True) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check whether the path coordinates given are valid road coordinate for the player given.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player</dd>
+<dt><strong><code>path_coords</code></strong></dt>
+<dd>The coordinates of the path</dd>
+<dt><strong><code>ensure_connected</code></strong></dt>
+<dd>Whether to ensure that the road is connected to the player's existing roads/buildings. Defaults to True</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Whether the player can build a road on this path</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_valid_road_coords(
+    self,
+    player: Player,
+    path_coords: Set[Coords],
+    ensure_connected: Optional[bool] = True,
+) -&gt; bool:
+    &#34;&#34;&#34;Check whether the path coordinates given are valid road coordinate for the player given.
+
+    Args:
+        player: The player
+        path_coords: The coordinates of the path
+        ensure_connected: Whether to ensure that the road is connected to the player&#39;s existing roads/buildings. Defaults to True
+    Returns:
+        Whether the player can build a road on this path
+    &#34;&#34;&#34;
+    try:
+        self.assert_valid_road_coords(
+            player, path_coords, ensure_connected=ensure_connected
+        )
+    except:  # noqa: E722
+        return False
+    return True</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Board.is_valid_settlement_coords"><code class="name flex">
+<span>def <span class="ident">is_valid_settlement_coords</span></span>(<span>self, player: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>, ensure_connected: Optional[bool]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check whether the given coordinates are a valid place for the player to build a settlement.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>player</code></strong></dt>
+<dd>The player</dd>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coordinates to check</dd>
+<dt><strong><code>ensure_connected</code></strong></dt>
+<dd>Whether to ensure that the settlement will be connected to the player's roads</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Whether the coordinates are a valid settlement location for the player</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_valid_settlement_coords(
+    self, player: Player, coords: Coords, ensure_connected: Optional[bool]
+) -&gt; bool:
+    &#34;&#34;&#34;Check whether the given coordinates are a valid place for the player to build a settlement.
+
+    Args:
+        player: The player
+        coords: The coordinates to check
+        ensure_connected: Whether to ensure that the settlement will be connected to the player&#39;s roads
+    Returns:
+        Whether the coordinates are a valid settlement location for the player
+    &#34;&#34;&#34;
+    try:
+        self.assert_valid_settlement_coords(
+            player=player, coords=coords, ensure_connected=ensure_connected
+        )
+    except:  # noqa: E722
+        return False
+    return True</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="katan_ai.katan.board.BoardRenderer"><code class="flex name class">
+<span>class <span class="ident">BoardRenderer</span></span>
+<span>(</span><span>board: <a title="katan_ai.katan.board.board.Board" href="board.html#katan_ai.katan.board.board.Board">Board</a>, player_color_map: Optional[Dict[<a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, str]] = {}, hex_color_map: Optional[Dict[<a title="katan_ai.katan.board.hex_type.HexType" href="hex_type.html#katan_ai.katan.board.hex_type.HexType">HexType</a>, str]] = {&lt;HexType.FIELDS: 3&gt;: &#x27;#ffea29&#x27;, &lt;HexType.FOREST: 0&gt;: &#x27;#005e09&#x27;, &lt;HexType.PASTURE: 2&gt;: &#x27;#52ff62&#x27;, &lt;HexType.HILLS: 1&gt;: &#x27;#cc1f0c&#x27;, &lt;HexType.MOUNTAINS: 4&gt;: &#x27;#7a7a7a&#x27;, &lt;HexType.DESERT: 5&gt;: &#x27;#ffe5a3&#x27;}, resource_color_map: Optional[Dict[<a title="katan_ai.katan.resource.Resource" href="../resource.html#katan_ai.katan.resource.Resource">Resource</a>, str]] = {&lt;Resource.GRAIN: 3&gt;: &#x27;#ffea29&#x27;, &lt;Resource.LUMBER: 0&gt;: &#x27;#005e09&#x27;, &lt;Resource.WOOL: 2&gt;: &#x27;#52ff62&#x27;, &lt;Resource.BRICK: 1&gt;: &#x27;#cc1f0c&#x27;, &lt;Resource.ORE: 4&gt;: &#x27;#7a7a7a&#x27;})</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class for rendering a board in the terminal and configuring its appearance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>board</code></strong></dt>
+<dd>The board to render</dd>
+</dl>
+<p>player_color_map:
+A map of which colors to use for which players. Colors are string hex codes (i.e. '#FF0000')
+hex_color_map:
+A map of which colors to use for the different types of hexes. Colors are string hex codes (i.e. '#FF00000')
+resource_color_map:
+A map of which colors to use for the different resource harbors. Colors are string hex codes (i.e. '#FF00000')</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BoardRenderer:
+    &#34;&#34;&#34;Class for rendering a board in the terminal and configuring its appearance.
+
+    Args:
+        board: The board to render
+        player_color_map:
+            A map of which colors to use for which players. Colors are string hex codes (i.e. &#39;#FF0000&#39;)
+        hex_color_map:
+            A map of which colors to use for the different types of hexes. Colors are string hex codes (i.e. &#39;#FF00000&#39;)
+        resource_color_map:
+            A map of which colors to use for the different resource harbors. Colors are string hex codes (i.e. &#39;#FF00000&#39;)
+    &#34;&#34;&#34;
+
+    DEFAULT_PLAYER_COLORS = [&#34;#00c40d&#34;, &#34;#ff00d9&#34;, &#34;#0000FF&#34;, &#34;#00FFFF&#34;]
+
+    DEFAULT_HEX_COLORS = {
+        HexType.FIELDS: &#34;#ffea29&#34;,
+        HexType.FOREST: &#34;#005e09&#34;,
+        HexType.PASTURE: &#34;#52ff62&#34;,
+        HexType.HILLS: &#34;#cc1f0c&#34;,
+        HexType.MOUNTAINS: &#34;#7a7a7a&#34;,
+        HexType.DESERT: &#34;#ffe5a3&#34;,
+    }
+
+    DEFAULT_RESOURCE_COLORS = {
+        Resource.GRAIN: &#34;#ffea29&#34;,
+        Resource.LUMBER: &#34;#005e09&#34;,
+        Resource.WOOL: &#34;#52ff62&#34;,
+        Resource.BRICK: &#34;#cc1f0c&#34;,
+        Resource.ORE: &#34;#7a7a7a&#34;,
+    }
+
+    WATER_COLOR = &#34;#2387de&#34;
+
+    def __init__(
+        self,
+        board: board.Board,
+        player_color_map: Optional[Dict[Player, str]] = {},
+        hex_color_map: Optional[Dict[HexType, str]] = DEFAULT_HEX_COLORS,
+        resource_color_map: Optional[Dict[Resource, str]] = DEFAULT_RESOURCE_COLORS,
+    ):
+        self.board = board
+        self._unused_player_colors = BoardRenderer.DEFAULT_PLAYER_COLORS
+        self.player_color_map = player_color_map
+        self.hex_color_map = hex_color_map
+        self.resource_color_map = resource_color_map
+
+    def _get_player_color(self, player: Player):
+        if player not in self.player_color_map:
+            self.player_color_map[player] = self._unused_player_colors.pop(0)
+        return self.player_color_map[player]
+
+    def _get_path(self, chars, path, path_labels):
+        fore = &#34;#9c7500&#34;
+        back = self.hex_color_map[HexType.DESERT]
+        if path.building is not None:
+            fore = self._get_player_color(path.building.owner)
+        elif frozenset(path.path_coords) in self.board.harbors:
+            fore = &#34;#000000&#34;
+        if path in path_labels:
+            chars = [path_labels[path]] * len(chars)
+        return list(map(lambda x: stylize(x, fg(fore) + bg(back)), chars))
+
+    def _get_intersection(self, char, intersection, intersection_labels):
+        fore = &#34;#9c7500&#34;
+        back = self.hex_color_map[HexType.DESERT]
+        if intersection in intersection_labels:
+            return [
+                stylize(intersection_labels[intersection], fg(&#34;#000000&#34;) + bg(back))
+            ]
+        if intersection.building is not None:
+            fore = self._get_player_color(intersection.building.owner)
+            char = (
+                &#34;s&#34;
+                if intersection.building.building_type is BuildingType.SETTLEMENT
+                else &#34;c&#34;
+            )
+        return [stylize(char, fg(fore) + bg(back))]
+
+    def _get_hex_center(self, h, hex_labels):
+        space = stylize(&#34; &#34;, bg(self.hex_color_map[h.hex_type]))
+        if h in hex_labels:
+            return [space, space, hex_labels[h], space, space]
+        if h.token_number is None:
+            return [space] * 5
+        token_color = (
+            &#34;#FF0000&#34; if h.token_number == 6 or h.token_number == 8 else &#34;#000000&#34;
+        )
+        token_chars = [space if h.token_number &lt; 10 else &#34;&#34;] + [
+            stylize(h.token_number, fg(token_color) + bg(&#34;#FFFFFF&#34;))
+        ]
+        return [space] + [t for t in token_chars] + [space, space]
+
+    def _get_hex(self, coords, hex_labels, intersection_labels, path_labels):
+        intersection_coords = [
+            c + coords
+            for c in (
+                Coords(1, -1),
+                Coords(1, 0),
+                Coords(0, 1),
+                Coords(-1, 1),
+                Coords(-1, 0),
+                Coords(0, -1),
+            )
+        ]
+        intersections = [self.board.intersections[c] for c in intersection_coords]
+        paths = [
+            self.board.paths[
+                frozenset(
+                    {
+                        intersection_coords[i],
+                        intersection_coords[(i + 1) % len(intersection_coords)],
+                    }
+                )
+            ]
+            for i in range(len(intersection_coords))
+        ]
+        return [
+            self._get_intersection(&#34;.&#34;, intersections[0], intersection_labels)
+            + self._get_path([&#34;-&#34;, &#34;-&#34;], paths[0], path_labels)
+            + self._get_intersection(&#34;&#39;&#34;, intersections[1], intersection_labels)
+            + self._get_path([&#34;-&#34;, &#34;-&#34;], paths[1], path_labels)
+            + self._get_intersection(&#34;.&#34;, intersections[2], intersection_labels),
+            self._get_path([&#34;|&#34;], paths[5], path_labels)
+            + self._get_hex_center(self.board.hexes[coords], hex_labels)
+            + self._get_path([&#34;|&#34;], paths[2], path_labels),
+            self._get_intersection(&#34;&#39;&#34;, intersections[5], intersection_labels)
+            + self._get_path([&#34;-&#34;, &#34;-&#34;], paths[4], path_labels)
+            + self._get_intersection(&#34;.&#34;, intersections[4], intersection_labels)
+            + self._get_path([&#34;-&#34;, &#34;-&#34;], paths[3], path_labels)
+            + self._get_intersection(&#34;&#39;&#34;, intersections[3], intersection_labels),
+        ]
+
+    def _stylize_arr(self, arr, styles):
+        return [stylize(s, styles) for s in arr]
+
+    def _get_harbor(self, harbor):
+        fore = (
+            &#34;#FFFFFF&#34;
+            if harbor.resource is None
+            else self.resource_color_map[harbor.resource]
+        )
+        return [
+            self._stylize_arr(
+                [&#34;3&#34; if harbor.resource is None else &#34;2&#34;, &#34;:&#34;, &#34;1&#34;],
+                fg(fore) + bg(BoardRenderer.WATER_COLOR),
+            )
+        ]
+
+    def _get_harbor_coords(self, harbor):
+        connected_coords = [
+            [c + coord for c in Hex.CONNECTED_CORNER_OFFSETS]
+            for coord in harbor.path_coords
+        ]
+        overlap = [
+            c
+            for c in connected_coords[0]
+            if c in connected_coords[1] and c not in self.board.hexes
+        ]
+        hex_coords = self._get_hex_center_coords(overlap[0])
+        return (hex_coords[0] + 2, hex_coords[1] + 1)
+
+    def _copy_into_array(self, buf, to_copy, x, y):
+        for i in range(len(to_copy)):
+            for j in range(len(to_copy[i])):
+                buf[y + i][x + j] = to_copy[i][j]
+
+    def _get_hex_center_coords(self, coords):
+        return ((int)(3 * coords.r), -(int)(1.34 * coords.q + 0.67 * coords.r))
+
+    def get_coords_as_xy(self, coords: Coords) -&gt; Tuple:
+        &#34;&#34;&#34;Get the coordinates given as x, y position.
+
+        Args:
+            coords: The coordinates
+        Returns:
+            The (x, y) position
+        &#34;&#34;&#34;
+        if coords in self.board.hexes:
+            x, y = self._get_hex_center_coords(coords)
+            return (x + 2, y + 1)
+        elif coords in self.board.intersections:
+            h = list(self.board.get_hexes_connected_to_intersection(coords))[0]
+            y, x = {
+                Coords(1, 0): (3, 0),
+                Coords(0, 1): (6, 0),
+                Coords(-1, 1): (6, 2),
+                Coords(-1, 0): (3, 2),
+                Coords(0, -1): (0, 2),
+                Coords(1, -1): (0, 0),
+            }[coords - h]
+            hy, hx = self._get_hex_center_coords(h)
+            return (x + hx, y + hy)
+        return 0, 0
+
+    def get_board_as_string(
+        self,
+        hex_labels: Optional[Dict[Hex, str]] = {},
+        intersection_labels: Optional[Dict[Intersection, str]] = {},
+        path_labels: Optional[Dict[Path, str]] = {},
+    ) -&gt; str:
+        &#34;&#34;&#34;Get the board as a large, multiline string that includes colors.
+
+        Args:
+            hex_labels: A dictionary of labels to put on the hexes instead of the numbered tokens
+            intersection_labels: A dictionary of labels to put on the points
+            path_labels: A dictionary of labels to put on the paths
+
+        Returns:
+            str: The board as a string
+        &#34;&#34;&#34;
+        size = 20, 55
+        buf = [
+            [stylize(&#34; &#34;, bg(BoardRenderer.WATER_COLOR)) for j in range(size[1])]
+            for i in range(size[0])
+        ]
+
+        center = int(size[1] / 2) - 3, int(size[0] / 2) - 1
+
+        for hex_coords in self.board.hexes:
+            x, y = self._get_hex_center_coords(hex_coords)
+            self._copy_into_array(
+                buf,
+                self._get_hex(hex_coords, hex_labels, intersection_labels, path_labels),
+                center[0] + x,
+                center[1] + y,
+            )
+        for harbor in self.board.harbors.values():
+            x, y = self._get_harbor_coords(harbor)
+            self._copy_into_array(
+                buf, self._get_harbor(harbor), center[0] + x, center[1] + y
+            )
+
+        x, y = self._get_hex_center_coords(self.board.robber)
+        self._copy_into_array(
+            buf,
+            [[stylize(&#34;R&#34;, fg(&#34;#FFFFFF&#34;) + bg(&#34;#000000&#34;))]],
+            center[0] + x + 4,
+            center[1] + y + 1,
+        )
+
+        return &#34;\n&#34;.join([&#34;&#34;.join(row) for row in buf])
+
+    def render_board(
+        self,
+        hex_labels: Optional[Dict[Hex, str]] = {},
+        intersection_labels: Optional[Dict[Intersection, str]] = {},
+        path_labels: Optional[Dict[Path, str]] = {},
+    ):
+        &#34;&#34;&#34;Render the board into the terminal.
+
+        Args:
+            hex_labels: A dictionary of labels to put on the hexes instead of the numbered tokens
+            intersection_labels: A dictionary of labels to put on the points
+            path_labels: A dictionary of labels to put on the paths
+        &#34;&#34;&#34;
+        buf = self.get_board_as_string(hex_labels, intersection_labels, path_labels)
+        print(buf)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="katan_ai.katan.board.BoardRenderer.DEFAULT_HEX_COLORS"><code class="name">var <span class="ident">DEFAULT_HEX_COLORS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="katan_ai.katan.board.BoardRenderer.DEFAULT_PLAYER_COLORS"><code class="name">var <span class="ident">DEFAULT_PLAYER_COLORS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="katan_ai.katan.board.BoardRenderer.DEFAULT_RESOURCE_COLORS"><code class="name">var <span class="ident">DEFAULT_RESOURCE_COLORS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="katan_ai.katan.board.BoardRenderer.WATER_COLOR"><code class="name">var <span class="ident">WATER_COLOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="katan_ai.katan.board.BoardRenderer.get_board_as_string"><code class="name flex">
+<span>def <span class="ident">get_board_as_string</span></span>(<span>self, hex_labels: Optional[Dict[<a title="katan_ai.katan.board.hex.Hex" href="hex.html#katan_ai.katan.board.hex.Hex">Hex</a>, str]] = {}, intersection_labels: Optional[Dict[<a title="katan_ai.katan.board.intersection.Intersection" href="intersection.html#katan_ai.katan.board.intersection.Intersection">Intersection</a>, str]] = {}, path_labels: Optional[Dict[<a title="katan_ai.katan.board.path.Path" href="path.html#katan_ai.katan.board.path.Path">Path</a>, str]] = {}) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the board as a large, multiline string that includes colors.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>hex_labels</code></strong></dt>
+<dd>A dictionary of labels to put on the hexes instead of the numbered tokens</dd>
+<dt><strong><code>intersection_labels</code></strong></dt>
+<dd>A dictionary of labels to put on the points</dd>
+<dt><strong><code>path_labels</code></strong></dt>
+<dd>A dictionary of labels to put on the paths</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>The board as a string</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_board_as_string(
+    self,
+    hex_labels: Optional[Dict[Hex, str]] = {},
+    intersection_labels: Optional[Dict[Intersection, str]] = {},
+    path_labels: Optional[Dict[Path, str]] = {},
+) -&gt; str:
+    &#34;&#34;&#34;Get the board as a large, multiline string that includes colors.
+
+    Args:
+        hex_labels: A dictionary of labels to put on the hexes instead of the numbered tokens
+        intersection_labels: A dictionary of labels to put on the points
+        path_labels: A dictionary of labels to put on the paths
+
+    Returns:
+        str: The board as a string
+    &#34;&#34;&#34;
+    size = 20, 55
+    buf = [
+        [stylize(&#34; &#34;, bg(BoardRenderer.WATER_COLOR)) for j in range(size[1])]
+        for i in range(size[0])
+    ]
+
+    center = int(size[1] / 2) - 3, int(size[0] / 2) - 1
+
+    for hex_coords in self.board.hexes:
+        x, y = self._get_hex_center_coords(hex_coords)
+        self._copy_into_array(
+            buf,
+            self._get_hex(hex_coords, hex_labels, intersection_labels, path_labels),
+            center[0] + x,
+            center[1] + y,
+        )
+    for harbor in self.board.harbors.values():
+        x, y = self._get_harbor_coords(harbor)
+        self._copy_into_array(
+            buf, self._get_harbor(harbor), center[0] + x, center[1] + y
+        )
+
+    x, y = self._get_hex_center_coords(self.board.robber)
+    self._copy_into_array(
+        buf,
+        [[stylize(&#34;R&#34;, fg(&#34;#FFFFFF&#34;) + bg(&#34;#000000&#34;))]],
+        center[0] + x + 4,
+        center[1] + y + 1,
+    )
+
+    return &#34;\n&#34;.join([&#34;&#34;.join(row) for row in buf])</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.BoardRenderer.get_coords_as_xy"><code class="name flex">
+<span>def <span class="ident">get_coords_as_xy</span></span>(<span>self, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>) ‑> Tuple[]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the coordinates given as x, y position.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coordinates</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The (x, y) position</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_coords_as_xy(self, coords: Coords) -&gt; Tuple:
+    &#34;&#34;&#34;Get the coordinates given as x, y position.
+
+    Args:
+        coords: The coordinates
+    Returns:
+        The (x, y) position
+    &#34;&#34;&#34;
+    if coords in self.board.hexes:
+        x, y = self._get_hex_center_coords(coords)
+        return (x + 2, y + 1)
+    elif coords in self.board.intersections:
+        h = list(self.board.get_hexes_connected_to_intersection(coords))[0]
+        y, x = {
+            Coords(1, 0): (3, 0),
+            Coords(0, 1): (6, 0),
+            Coords(-1, 1): (6, 2),
+            Coords(-1, 0): (3, 2),
+            Coords(0, -1): (0, 2),
+            Coords(1, -1): (0, 0),
+        }[coords - h]
+        hy, hx = self._get_hex_center_coords(h)
+        return (x + hx, y + hy)
+    return 0, 0</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.BoardRenderer.render_board"><code class="name flex">
+<span>def <span class="ident">render_board</span></span>(<span>self, hex_labels: Optional[Dict[<a title="katan_ai.katan.board.hex.Hex" href="hex.html#katan_ai.katan.board.hex.Hex">Hex</a>, str]] = {}, intersection_labels: Optional[Dict[<a title="katan_ai.katan.board.intersection.Intersection" href="intersection.html#katan_ai.katan.board.intersection.Intersection">Intersection</a>, str]] = {}, path_labels: Optional[Dict[<a title="katan_ai.katan.board.path.Path" href="path.html#katan_ai.katan.board.path.Path">Path</a>, str]] = {})</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Render the board into the terminal.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>hex_labels</code></strong></dt>
+<dd>A dictionary of labels to put on the hexes instead of the numbered tokens</dd>
+<dt><strong><code>intersection_labels</code></strong></dt>
+<dd>A dictionary of labels to put on the points</dd>
+<dt><strong><code>path_labels</code></strong></dt>
+<dd>A dictionary of labels to put on the paths</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def render_board(
+    self,
+    hex_labels: Optional[Dict[Hex, str]] = {},
+    intersection_labels: Optional[Dict[Intersection, str]] = {},
+    path_labels: Optional[Dict[Path, str]] = {},
+):
+    &#34;&#34;&#34;Render the board into the terminal.
+
+    Args:
+        hex_labels: A dictionary of labels to put on the hexes instead of the numbered tokens
+        intersection_labels: A dictionary of labels to put on the points
+        path_labels: A dictionary of labels to put on the paths
+    &#34;&#34;&#34;
+    buf = self.get_board_as_string(hex_labels, intersection_labels, path_labels)
+    print(buf)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="katan_ai.katan.board.Building"><code class="flex name class">
+<span>class <span class="ident">Building</span></span>
+<span>(</span><span>owner: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, building_type: <a title="katan_ai.katan.board.building_type.BuildingType" href="building_type.html#katan_ai.katan.board.building_type.BuildingType">BuildingType</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A building on the Catan board.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>owner</code></strong> :&ensp;<code>Player</code></dt>
+<dd>The player who owns this building</dd>
+<dt><strong><code>building_type</code></strong> :&ensp;<code><a title="katan_ai.katan.board.BuildingType" href="#katan_ai.katan.board.BuildingType">BuildingType</a></code></dt>
+<dd>The type of building this is</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>owner</code></strong></dt>
+<dd>The player who owns this building</dd>
+<dt><strong><code>building_type</code></strong></dt>
+<dd>The type of building this is</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Building:
+    &#34;&#34;&#34;A building on the Catan board.
+
+    Attributes:
+            owner (Player): The player who owns this building
+            building_type (BuildingType): The type of building this is
+
+    Args:
+            owner: The player who owns this building
+            building_type: The type of building this is
+    &#34;&#34;&#34;
+
+    def __init__(self, owner: Player, building_type: BuildingType):
+        self.owner = owner
+        self.building_type = building_type</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="katan_ai.katan.board.building.PathBuilding" href="building.html#katan_ai.katan.board.building.PathBuilding">PathBuilding</a></li>
+<li><a title="katan_ai.katan.board.intersection_building.IntersectionBuilding" href="intersection_building.html#katan_ai.katan.board.intersection_building.IntersectionBuilding">IntersectionBuilding</a></li>
+</ul>
+</dd>
+<dt id="katan_ai.katan.board.BuildingType"><code class="flex name class">
+<span>class <span class="ident">BuildingType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A type of building in a Catan game.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BuildingType(Enum):
+    &#34;&#34;&#34;A type of building in a Catan game.&#34;&#34;&#34;
+
+    ROAD = 0
+    &#34;&#34;&#34;The roads&#34;&#34;&#34;
+    SETTLEMENT = 1
+    &#34;&#34;&#34;The settlements&#34;&#34;&#34;
+    CITY = 2
+    &#34;&#34;&#34;The cities&#34;&#34;&#34;
+
+    def get_required_resources(self):
+        &#34;&#34;&#34;Get the resources required to build this building.
+
+        Returns:
+            Dict[Resource, int]: The amount of each resource required to build this building
+        &#34;&#34;&#34;
+        if self == BuildingType.ROAD:
+            return {Resource.BRICK: 1, Resource.LUMBER: 1}
+        elif self == BuildingType.SETTLEMENT:
+            return {
+                Resource.BRICK: 1,
+                Resource.LUMBER: 1,
+                Resource.WOOL: 1,
+                Resource.GRAIN: 1,
+            }
+        elif self == BuildingType.CITY:
+            return {Resource.ORE: 3, Resource.GRAIN: 2}</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="katan_ai.katan.board.BuildingType.CITY"><code class="name">var <span class="ident">CITY</span></code></dt>
+<dd>
+<div class="desc"><p>The cities</p></div>
+</dd>
+<dt id="katan_ai.katan.board.BuildingType.ROAD"><code class="name">var <span class="ident">ROAD</span></code></dt>
+<dd>
+<div class="desc"><p>The roads</p></div>
+</dd>
+<dt id="katan_ai.katan.board.BuildingType.SETTLEMENT"><code class="name">var <span class="ident">SETTLEMENT</span></code></dt>
+<dd>
+<div class="desc"><p>The settlements</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="katan_ai.katan.board.BuildingType.get_required_resources"><code class="name flex">
+<span>def <span class="ident">get_required_resources</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the resources required to build this building.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Dict[Resource, int]</code></dt>
+<dd>The amount of each resource required to build this building</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_required_resources(self):
+    &#34;&#34;&#34;Get the resources required to build this building.
+
+    Returns:
+        Dict[Resource, int]: The amount of each resource required to build this building
+    &#34;&#34;&#34;
+    if self == BuildingType.ROAD:
+        return {Resource.BRICK: 1, Resource.LUMBER: 1}
+    elif self == BuildingType.SETTLEMENT:
+        return {
+            Resource.BRICK: 1,
+            Resource.LUMBER: 1,
+            Resource.WOOL: 1,
+            Resource.GRAIN: 1,
+        }
+    elif self == BuildingType.CITY:
+        return {Resource.ORE: 3, Resource.GRAIN: 2}</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="katan_ai.katan.board.Coords"><code class="flex name class">
+<span>class <span class="ident">Coords</span></span>
+<span>(</span><span>q, r)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class used to represent coordinates on the Catan board.</p>
+<p>Stores a coordinate on a triangular grid, so that each
+hex and point both has a unique coord.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>q</code></strong> :&ensp;<code>int</code></dt>
+<dd>The q coordinate</dd>
+<dt><strong><code>r</code></strong> :&ensp;<code>int</code></dt>
+<dd>The r coordinate</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Coords:
+    &#34;&#34;&#34;
+    A class used to represent coordinates on the Catan board.
+
+    Stores a coordinate on a triangular grid, so that each
+    hex and point both has a unique coord.
+
+    Args:
+            q (int): The q coordinate
+            r (int): The r coordinate
+    &#34;&#34;&#34;
+
+    def __init__(self, q, r):
+        self.q = q
+        self.r = r
+
+    def __hash__(self):
+        return hash((self.q, self.r))
+
+    def __eq__(self, other):
+        return self.q == other.q and self.r == other.r
+
+    def __add__(self, other):
+        return Coords(self.q + other.q, self.r + other.r)
+
+    def __sub__(self, other):
+        return Coords(self.q - other.q, self.r - other.r)
+
+    def __str__(self):
+        return &#34;(q: %d, r:%d)&#34; % (self.q, self.r)
+
+    def __repr__(self):
+        return self.__str__()</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Harbor"><code class="flex name class">
+<span>class <span class="ident">Harbor</span></span>
+<span>(</span><span>path_coords: Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>], resource: <a title="katan_ai.katan.resource.Resource" href="../resource.html#katan_ai.katan.resource.Resource">Resource</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A harbor on the catan board.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>path_coords</code></strong> :&ensp;<code>Set[<a title="katan_ai.katan.board.Coords" href="#katan_ai.katan.board.Coords">Coords</a>]</code></dt>
+<dd>The coordinates of the path that the harbor is attached to</dd>
+<dt><strong><code>resource</code></strong> :&ensp;<code>Resource</code></dt>
+<dd>The resource that the player can trade in 2-1</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>path_coords</code></strong> :&ensp;<code>Set[<a title="katan_ai.katan.board.Coords" href="#katan_ai.katan.board.Coords">Coords</a>]</code></dt>
+<dd>The coordinates of the path that the harbor is attached to</dd>
+<dt><strong><code>resource</code></strong> :&ensp;<code>Resource</code></dt>
+<dd>The resource that the player can trade in 2-1</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Harbor:
+    &#34;&#34;&#34;A harbor on the catan board.
+
+    Attributes:
+        path_coords (Set[Coords]): The coordinates of the path that the harbor is attached to
+        resource (Resource): The resource that the player can trade in 2-1
+    Args:
+        path_coords (Set[Coords]): The coordinates of the path that the harbor is attached to
+        resource (Resource): The resource that the player can trade in 2-1
+    &#34;&#34;&#34;
+
+    def __init__(self, path_coords: Set[Coords], resource: Resource):
+        self.path_coords = path_coords
+        self.resource = resource</code></pre>
+</details>
+</dd>
+<dt id="katan_ai.katan.board.Hex"><code class="flex name class">
+<span>class <span class="ident">Hex</span></span>
+<span>(</span><span>coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>, hex_type: <a title="katan_ai.katan.board.hex_type.HexType" href="hex_type.html#katan_ai.katan.board.hex_type.HexType">HexType</a>, token_number: Optional[int] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A hex on a Catan board.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coordinates of this hex</dd>
+<dt><strong><code>hex_type</code></strong></dt>
+<dd>The type of this hex</dd>
+<dt><strong><code>token_number</code></strong></dt>
+<dd>The number of the token on this hex, or None if the hex is a desert</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt>CONNECTED_POINTS_OFFSETS (Set[Coords]):</dt>
+<dt>The offsets of the connected points from a hex's coordinates</dt>
+<dt><strong><code>coords</code></strong> :&ensp;<code><a title="katan_ai.katan.board.Coords" href="#katan_ai.katan.board.Coords">Coords</a></code></dt>
+<dd>The coordinates of this hex</dd>
+<dt><strong><code>hex_type</code></strong> :&ensp;<code><a title="katan_ai.katan.board.HexType" href="#katan_ai.katan.board.HexType">HexType</a></code></dt>
+<dd>The type of this hex</dd>
+<dt><strong><code>token_number</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of the token on this hex</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Hex:
+    &#34;&#34;&#34;A hex on a Catan board.
+
+    Args:
+        coords: The coordinates of this hex
+        hex_type: The type of this hex
+        token_number: The number of the token on this hex, or None if the hex is a desert
+
+    Attributes:
+        CONNECTED_POINTS_OFFSETS (Set[Coords]):
+                The offsets of the connected points from a hex&#39;s coordinates
+        coords (Coords): The coordinates of this hex
+        hex_type (HexType): The type of this hex
+        token_number (int): The number of the token on this hex
+    &#34;&#34;&#34;
+
+    CONNECTED_CORNER_OFFSETS: Set[Coords] = {
+        Coords(1, 0),
+        Coords(0, 1),
+        Coords(-1, 1),
+        Coords(-1, 0),
+        Coords(0, -1),
+        Coords(1, -1),
+    }
+
+    def __init__(
+        self, coords: Coords, hex_type: HexType, token_number: Optional[int] = None
+    ):
+        self.coords = coords
+        self.hex_type = hex_type
+        self.token_number = token_number</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="katan_ai.katan.board.Hex.CONNECTED_CORNER_OFFSETS"><code class="name">var <span class="ident">CONNECTED_CORNER_OFFSETS</span> : Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="katan_ai.katan.board.HexType"><code class="flex name class">
+<span>class <span class="ident">HexType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The different types of hexes in the game.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HexType(Enum):
+    &#34;&#34;&#34;The different types of hexes in the game.&#34;&#34;&#34;
+
+    FOREST = 0
+    &#34;&#34;&#34;The forest hex type&#34;&#34;&#34;
+
+    HILLS = 1
+    &#34;&#34;&#34;The hills hex type&#34;&#34;&#34;
+
+    PASTURE = 2
+    &#34;&#34;&#34;The pasture hex type&#34;&#34;&#34;
+
+    FIELDS = 3
+    &#34;&#34;&#34;The fields hex type&#34;&#34;&#34;
+
+    MOUNTAINS = 4
+    &#34;&#34;&#34;The mountains hex type&#34;&#34;&#34;
+
+    DESERT = 5
+    &#34;&#34;&#34;The desert hex type&#34;&#34;&#34;
+
+    def get_resource(self) -&gt; Resource:
+        &#34;&#34;&#34;Get the resource the player receives when a hex of this type is activated.
+
+        Returns:
+            Resource: The resource the player would get
+            None: If the player would not get a resource (i.e. a desert hex)
+        &#34;&#34;&#34;
+        if self == HexType.FOREST:
+            return Resource.LUMBER
+        elif self == HexType.HILLS:
+            return Resource.BRICK
+        elif self == HexType.PASTURE:
+            return Resource.WOOL
+        elif self == HexType.FIELDS:
+            return Resource.GRAIN
+        elif self == HexType.MOUNTAINS:
+            return Resource.ORE
+        elif self == HexType.DESERT:
+            return None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="katan_ai.katan.board.HexType.DESERT"><code class="name">var <span class="ident">DESERT</span></code></dt>
+<dd>
+<div class="desc"><p>The desert hex type</p></div>
+</dd>
+<dt id="katan_ai.katan.board.HexType.FIELDS"><code class="name">var <span class="ident">FIELDS</span></code></dt>
+<dd>
+<div class="desc"><p>The fields hex type</p></div>
+</dd>
+<dt id="katan_ai.katan.board.HexType.FOREST"><code class="name">var <span class="ident">FOREST</span></code></dt>
+<dd>
+<div class="desc"><p>The forest hex type</p></div>
+</dd>
+<dt id="katan_ai.katan.board.HexType.HILLS"><code class="name">var <span class="ident">HILLS</span></code></dt>
+<dd>
+<div class="desc"><p>The hills hex type</p></div>
+</dd>
+<dt id="katan_ai.katan.board.HexType.MOUNTAINS"><code class="name">var <span class="ident">MOUNTAINS</span></code></dt>
+<dd>
+<div class="desc"><p>The mountains hex type</p></div>
+</dd>
+<dt id="katan_ai.katan.board.HexType.PASTURE"><code class="name">var <span class="ident">PASTURE</span></code></dt>
+<dd>
+<div class="desc"><p>The pasture hex type</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="katan_ai.katan.board.HexType.get_resource"><code class="name flex">
+<span>def <span class="ident">get_resource</span></span>(<span>self) ‑> <a title="katan_ai.katan.resource.Resource" href="../resource.html#katan_ai.katan.resource.Resource">Resource</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the resource the player receives when a hex of this type is activated.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Resource</code></dt>
+<dd>The resource the player would get</dd>
+<dt><code>None</code></dt>
+<dd>If the player would not get a resource (i.e. a desert hex)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_resource(self) -&gt; Resource:
+    &#34;&#34;&#34;Get the resource the player receives when a hex of this type is activated.
+
+    Returns:
+        Resource: The resource the player would get
+        None: If the player would not get a resource (i.e. a desert hex)
+    &#34;&#34;&#34;
+    if self == HexType.FOREST:
+        return Resource.LUMBER
+    elif self == HexType.HILLS:
+        return Resource.BRICK
+    elif self == HexType.PASTURE:
+        return Resource.WOOL
+    elif self == HexType.FIELDS:
+        return Resource.GRAIN
+    elif self == HexType.MOUNTAINS:
+        return Resource.ORE
+    elif self == HexType.DESERT:
+        return None</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="katan_ai.katan.board.Intersection"><code class="flex name class">
+<span>class <span class="ident">Intersection</span></span>
+<span>(</span><span>coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>, building: Optional[<a title="katan_ai.katan.board.intersection_building.IntersectionBuilding" href="intersection_building.html#katan_ai.katan.board.intersection_building.IntersectionBuilding">IntersectionBuilding</a>] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A intersection on the Catan board.</p>
+<h2 id="args">Args</h2>
+<p>coords:
+The coordinates of the intersection.
+building:
+The building on the intersection.</p>
+<h2 id="attributes">Attributes</h2>
+<p>CONNECTED_CORNER_OFFSETS (Set[Coords]):
+The offsets of the intersections that are connected by an path.
+i.e. to get the connected intersections, add a intersection's coords to these values,
+and then filter for which coords are valid intersection coords.
+coords (Coords):
+The coordinates of the intersection.
+building (IntersectionBuilding, optional):
+The building on the intersection.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Intersection:
+    &#34;&#34;&#34;A intersection on the Catan board.
+
+    Args:
+        coords:
+                The coordinates of the intersection.
+        building:
+                The building on the intersection.
+
+    Attributes:
+            CONNECTED_CORNER_OFFSETS (Set[Coords]):
+                    The offsets of the intersections that are connected by an path.
+                    i.e. to get the connected intersections, add a intersection&#39;s coords to these values,
+                    and then filter for which coords are valid intersection coords.
+            coords (Coords):
+                    The coordinates of the intersection.
+            building (IntersectionBuilding, optional):
+                    The building on the intersection.
+    &#34;&#34;&#34;
+
+    CONNECTED_CORNER_OFFSETS: Set[Coords] = {
+        Coords(1, 0),
+        Coords(0, 1),
+        Coords(-1, 1),
+        Coords(-1, 0),
+        Coords(0, -1),
+        Coords(1, -1),
+    }
+
+    def __init__(self, coords: Coords, building: Optional[IntersectionBuilding] = None):
+        self.coords = coords
+        self.building = building</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="katan_ai.katan.board.Intersection.CONNECTED_CORNER_OFFSETS"><code class="name">var <span class="ident">CONNECTED_CORNER_OFFSETS</span> : Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="katan_ai.katan.board.IntersectionBuilding"><code class="flex name class">
+<span>class <span class="ident">IntersectionBuilding</span></span>
+<span>(</span><span>owner: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, building_type: <a title="katan_ai.katan.board.building_type.BuildingType" href="building_type.html#katan_ai.katan.board.building_type.BuildingType">BuildingType</a>, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A building that is built on a intersection. In the base game, a settlement or a city.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>owner</code></strong> :&ensp;<code>Player</code></dt>
+<dd>The player who owns this building</dd>
+<dt><strong><code>building_type</code></strong> :&ensp;<code><a title="katan_ai.katan.board.BuildingType" href="#katan_ai.katan.board.BuildingType">BuildingType</a></code></dt>
+<dd>The type of building this is</dd>
+<dt><strong><code>coords</code></strong> :&ensp;<code><a title="katan_ai.katan.board.Coords" href="#katan_ai.katan.board.Coords">Coords</a></code></dt>
+<dd>The coords the building is at</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>owner</code></strong></dt>
+<dd>The player who owns this building</dd>
+<dt><strong><code>building_type</code></strong></dt>
+<dd>The type of building this is</dd>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The coords the building is at</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class IntersectionBuilding(Building):
+    &#34;&#34;&#34;A building that is built on a intersection. In the base game, a settlement or a city.
+
+    Attributes:
+            owner (Player): The player who owns this building
+            building_type (BuildingType): The type of building this is
+            coords (Coords): The coords the building is at
+
+    Args:
+            owner: The player who owns this building
+            building_type: The type of building this is
+            coords: The coords the building is at
+    &#34;&#34;&#34;
+
+    def __init__(self, owner: Player, building_type: BuildingType, coords: Coords):
+        super().__init__(owner, building_type)
+        self.coords = coords</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="katan_ai.katan.board.building.Building" href="building.html#katan_ai.katan.board.building.Building">Building</a></li>
+</ul>
+</dd>
+<dt id="katan_ai.katan.board.Path"><code class="flex name class">
+<span>class <span class="ident">Path</span></span>
+<span>(</span><span>path_coords: Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>], building: Optional[<a title="katan_ai.katan.board.building.PathBuilding" href="building.html#katan_ai.katan.board.building.PathBuilding">PathBuilding</a>] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A path on a Catan board.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>path_coords</code></strong></dt>
+<dd>The coordinates of the two intersections
+that the path connects.</dd>
+<dt><strong><code>building</code></strong></dt>
+<dd>The building on this path.</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt>path_coords (set(Coords, Coords)): The coordinates of the two intersections</dt>
+<dt>that the path connects.</dt>
+<dt><strong><code>building</code></strong> :&ensp;<code><a title="katan_ai.katan.board.PathBuilding" href="#katan_ai.katan.board.PathBuilding">PathBuilding</a></code>, optional</dt>
+<dd>The building on this path.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Path:
+    &#34;&#34;&#34;A path on a Catan board.
+
+    Args:
+            path_coords: The coordinates of the two intersections
+                that the path connects.
+            building: The building on this path.
+    Attributes:
+            path_coords (set(Coords, Coords)): The coordinates of the two intersections
+                that the path connects.
+            building (PathBuilding, optional): The building on this path.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self, path_coords: Set[Coords], building: Optional[PathBuilding] = None
+    ):
+        self.path_coords = path_coords
+        self.building = building
+
+    def other_intersection(self, coords: Coords) -&gt; Coords:
+        &#34;&#34;&#34;Given one of the intersection coords for this path, returns the other one.
+
+        Args:
+            coords: The intersection coords
+        &#34;&#34;&#34;
+        return [c for c in self.path_coords if c != coords][0]</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="katan_ai.katan.board.Path.other_intersection"><code class="name flex">
+<span>def <span class="ident">other_intersection</span></span>(<span>self, coords: <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>) ‑> <a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given one of the intersection coords for this path, returns the other one.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>coords</code></strong></dt>
+<dd>The intersection coords</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def other_intersection(self, coords: Coords) -&gt; Coords:
+    &#34;&#34;&#34;Given one of the intersection coords for this path, returns the other one.
+
+    Args:
+        coords: The intersection coords
+    &#34;&#34;&#34;
+    return [c for c in self.path_coords if c != coords][0]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="katan_ai.katan.board.PathBuilding"><code class="flex name class">
+<span>class <span class="ident">PathBuilding</span></span>
+<span>(</span><span>owner: <a title="katan_ai.katan.player.Player" href="../player.html#katan_ai.katan.player.Player">Player</a>, building_type: <a title="katan_ai.katan.board.building_type.BuildingType" href="building_type.html#katan_ai.katan.board.building_type.BuildingType">BuildingType</a>, path_coords: Set[<a title="katan_ai.katan.board.coords.Coords" href="coords.html#katan_ai.katan.board.coords.Coords">Coords</a>])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A building that is built on a path. In the base game, only roads.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>owner</code></strong> :&ensp;<code>Player</code></dt>
+<dd>The player who owns this building</dd>
+<dt><strong><code>building_type</code></strong> :&ensp;<code><a title="katan_ai.katan.board.BuildingType" href="#katan_ai.katan.board.BuildingType">BuildingType</a></code></dt>
+<dd>The type of building this is</dd>
+<dt><strong><code>path_coords</code></strong> :&ensp;<code>Set[<a title="katan_ai.katan.board.Coords" href="#katan_ai.katan.board.Coords">Coords</a>]</code></dt>
+<dd>The coordinates of the two intersections the building is connecting</dd>
+</dl>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>owner</code></strong></dt>
+<dd>The player who owns this building</dd>
+<dt><strong><code>building_type</code></strong></dt>
+<dd>The type of building this is</dd>
+<dt><strong><code>path_coords</code></strong></dt>
+<dd>The coordinates of the two intersections the building is connecting</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PathBuilding(Building):
+    &#34;&#34;&#34;A building that is built on a path. In the base game, only roads.
+
+    Attributes:
+            owner (Player): The player who owns this building
+            building_type (BuildingType): The type of building this is
+            path_coords (Set[Coords]): The coordinates of the two intersections the building is connecting
+
+    Args:
+            owner: The player who owns this building
+            building_type: The type of building this is
+            path_coords: The coordinates of the two intersections the building is connecting
+    &#34;&#34;&#34;
+
+    def __init__(
+        self, owner: Player, building_type: BuildingType, path_coords: Set[Coords]
+    ):
+        super().__init__(owner, building_type)
+        self.path_coords = path_coords</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="katan_ai.katan.board.building.Building" href="building.html#katan_ai.katan.board.building.Building">Building</a></li>
+</ul>
+</dd>
+<dt id="katan_ai.katan.board.RandomBoard"><code class="flex name class">
+<span>class <span class="ident">RandomBoard</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>A board where the hexes, numbered tokens and harbors are all shuffled randomly.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RandomBoard(Board):
+    &#34;&#34;&#34;A board where the hexes, numbered tokens and harbors are all shuffled randomly.&#34;&#34;&#34;
+
+    def __init__(self):
+        hex_deck = (
+            [HexType.FOREST] * 4
+            + [HexType.PASTURE] * 4
+            + [HexType.FIELDS] * 4
+            + [HexType.HILLS] * 3
+            + [HexType.MOUNTAINS] * 3
+            + [HexType.DESERT]
+        )
+        token_deck = [5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11]
+        random.shuffle(hex_deck)
+        hex_coords = [
+            Coords(4, -2),
+            Coords(3, 0),
+            Coords(2, 2),
+            Coords(0, 3),
+            Coords(-2, 4),
+            Coords(-3, 3),
+            Coords(-4, 2),
+            Coords(-3, 0),
+            Coords(-2, -2),
+            Coords(0, -3),
+            Coords(2, -4),
+            Coords(3, -3),
+            Coords(2, -1),
+            Coords(1, 1),
+            Coords(-1, 2),
+            Coords(-2, 1),
+            Coords(-1, -1),
+            Coords(1, -2),
+            Coords(0, 0),
+        ]
+        hexes = set()
+        for h in hex_coords:
+            hex_type = hex_deck.pop()
+            hexes.add(
+                Hex(
+                    hex_type=hex_type,
+                    token_number=None
+                    if hex_type is HexType.DESERT
+                    else token_deck.pop(0),
+                    coords=h,
+                )
+            )
+        harbor_deck = [
+            Resource.BRICK,
+            Resource.LUMBER,
+            Resource.ORE,
+            Resource.WOOL,
+            Resource.GRAIN,
+        ] + 4 * [None]
+        random.shuffle(harbor_deck)
+        harbor_coords = {
+            frozenset({Coords(5, -2), Coords(5, -3)}),
+            frozenset({Coords(4, 0), Coords(3, 1)}),
+            frozenset({Coords(1, 3), Coords(0, 4)}),
+            frozenset({Coords(-2, 5), Coords(-3, 5)}),
+            frozenset({Coords(-4, 3), Coords(-4, 4)}),
+            frozenset({Coords(-4, 0), Coords(-4, 1)}),
+            frozenset({Coords(-3, -2), Coords(-2, -3)}),
+            frozenset({Coords(1, -4), Coords(0, -4)}),
+            frozenset({Coords(3, -4), Coords(4, -4)}),
+        }
+        harbors = set()
+        for h in harbor_coords:
+            harbors.add(Harbor(path_coords=h, resource=harbor_deck.pop()))
+        super().__init__(hexes=hexes, harbors=harbors)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="katan_ai.katan.board.board.Board" href="board.html#katan_ai.katan.board.board.Board">Board</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="katan_ai.katan.board.board.Board" href="board.html#katan_ai.katan.board.board.Board">Board</a></b></code>:
+<ul class="hlist">
+<li><code><a title="katan_ai.katan.board.board.Board.add_intersection_building" href="board.html#katan_ai.katan.board.board.Board.add_intersection_building">add_intersection_building</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.add_path_building" href="board.html#katan_ai.katan.board.board.Board.add_path_building">add_path_building</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.assert_valid_city_coords" href="board.html#katan_ai.katan.board.board.Board.assert_valid_city_coords">assert_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.assert_valid_road_coords" href="board.html#katan_ai.katan.board.board.Board.assert_valid_road_coords">assert_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.assert_valid_settlement_coords" href="board.html#katan_ai.katan.board.board.Board.assert_valid_settlement_coords">assert_valid_settlement_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.calculate_player_longest_road" href="board.html#katan_ai.katan.board.board.Board.calculate_player_longest_road">calculate_player_longest_road</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_connected_hex_intersections" href="board.html#katan_ai.katan.board.board.Board.get_connected_hex_intersections">get_connected_hex_intersections</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_hex_resources_for_intersection" href="board.html#katan_ai.katan.board.board.Board.get_hex_resources_for_intersection">get_hex_resources_for_intersection</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_hexes_connected_to_intersection" href="board.html#katan_ai.katan.board.board.Board.get_hexes_connected_to_intersection">get_hexes_connected_to_intersection</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_intersection_connected_intersections" href="board.html#katan_ai.katan.board.board.Board.get_intersection_connected_intersections">get_intersection_connected_intersections</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_paths_for_intersection_coords" href="board.html#katan_ai.katan.board.board.Board.get_paths_for_intersection_coords">get_paths_for_intersection_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_players_on_hex" href="board.html#katan_ai.katan.board.board.Board.get_players_on_hex">get_players_on_hex</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_valid_city_coords" href="board.html#katan_ai.katan.board.board.Board.get_valid_city_coords">get_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_valid_road_coords" href="board.html#katan_ai.katan.board.board.Board.get_valid_road_coords">get_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_valid_settlement_coords" href="board.html#katan_ai.katan.board.board.Board.get_valid_settlement_coords">get_valid_settlement_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.get_yield_for_roll" href="board.html#katan_ai.katan.board.board.Board.get_yield_for_roll">get_yield_for_roll</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.is_valid_city_coords" href="board.html#katan_ai.katan.board.board.Board.is_valid_city_coords">is_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.is_valid_hex_coords" href="board.html#katan_ai.katan.board.board.Board.is_valid_hex_coords">is_valid_hex_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.is_valid_road_coords" href="board.html#katan_ai.katan.board.board.Board.is_valid_road_coords">is_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.board.Board.is_valid_settlement_coords" href="board.html#katan_ai.katan.board.board.Board.is_valid_settlement_coords">is_valid_settlement_coords</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="katan_ai.katan" href="../index.html">katan_ai.katan</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="katan_ai.katan.board.beginner_board" href="beginner_board.html">katan_ai.katan.board.beginner_board</a></code></li>
+<li><code><a title="katan_ai.katan.board.board" href="board.html">katan_ai.katan.board.board</a></code></li>
+<li><code><a title="katan_ai.katan.board.board_renderer" href="board_renderer.html">katan_ai.katan.board.board_renderer</a></code></li>
+<li><code><a title="katan_ai.katan.board.building" href="building.html">katan_ai.katan.board.building</a></code></li>
+<li><code><a title="katan_ai.katan.board.building_type" href="building_type.html">katan_ai.katan.board.building_type</a></code></li>
+<li><code><a title="katan_ai.katan.board.coords" href="coords.html">katan_ai.katan.board.coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.harbor" href="harbor.html">katan_ai.katan.board.harbor</a></code></li>
+<li><code><a title="katan_ai.katan.board.hex" href="hex.html">katan_ai.katan.board.hex</a></code></li>
+<li><code><a title="katan_ai.katan.board.hex_type" href="hex_type.html">katan_ai.katan.board.hex_type</a></code></li>
+<li><code><a title="katan_ai.katan.board.intersection" href="intersection.html">katan_ai.katan.board.intersection</a></code></li>
+<li><code><a title="katan_ai.katan.board.intersection_building" href="intersection_building.html">katan_ai.katan.board.intersection_building</a></code></li>
+<li><code><a title="katan_ai.katan.board.path" href="path.html">katan_ai.katan.board.path</a></code></li>
+<li><code><a title="katan_ai.katan.board.random_board" href="random_board.html">katan_ai.katan.board.random_board</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="katan_ai.katan.board.BeginnerBoard" href="#katan_ai.katan.board.BeginnerBoard">BeginnerBoard</a></code></h4>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.Board" href="#katan_ai.katan.board.Board">Board</a></code></h4>
+<ul class="">
+<li><code><a title="katan_ai.katan.board.Board.add_intersection_building" href="#katan_ai.katan.board.Board.add_intersection_building">add_intersection_building</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.add_path_building" href="#katan_ai.katan.board.Board.add_path_building">add_path_building</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.assert_valid_city_coords" href="#katan_ai.katan.board.Board.assert_valid_city_coords">assert_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.assert_valid_road_coords" href="#katan_ai.katan.board.Board.assert_valid_road_coords">assert_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.assert_valid_settlement_coords" href="#katan_ai.katan.board.Board.assert_valid_settlement_coords">assert_valid_settlement_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.calculate_player_longest_road" href="#katan_ai.katan.board.Board.calculate_player_longest_road">calculate_player_longest_road</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_connected_hex_intersections" href="#katan_ai.katan.board.Board.get_connected_hex_intersections">get_connected_hex_intersections</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_hex_resources_for_intersection" href="#katan_ai.katan.board.Board.get_hex_resources_for_intersection">get_hex_resources_for_intersection</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_hexes_connected_to_intersection" href="#katan_ai.katan.board.Board.get_hexes_connected_to_intersection">get_hexes_connected_to_intersection</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_intersection_connected_intersections" href="#katan_ai.katan.board.Board.get_intersection_connected_intersections">get_intersection_connected_intersections</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_paths_for_intersection_coords" href="#katan_ai.katan.board.Board.get_paths_for_intersection_coords">get_paths_for_intersection_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_players_on_hex" href="#katan_ai.katan.board.Board.get_players_on_hex">get_players_on_hex</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_valid_city_coords" href="#katan_ai.katan.board.Board.get_valid_city_coords">get_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_valid_road_coords" href="#katan_ai.katan.board.Board.get_valid_road_coords">get_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_valid_settlement_coords" href="#katan_ai.katan.board.Board.get_valid_settlement_coords">get_valid_settlement_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.get_yield_for_roll" href="#katan_ai.katan.board.Board.get_yield_for_roll">get_yield_for_roll</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.is_valid_city_coords" href="#katan_ai.katan.board.Board.is_valid_city_coords">is_valid_city_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.is_valid_hex_coords" href="#katan_ai.katan.board.Board.is_valid_hex_coords">is_valid_hex_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.is_valid_road_coords" href="#katan_ai.katan.board.Board.is_valid_road_coords">is_valid_road_coords</a></code></li>
+<li><code><a title="katan_ai.katan.board.Board.is_valid_settlement_coords" href="#katan_ai.katan.board.Board.is_valid_settlement_coords">is_valid_settlement_coords</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.BoardRenderer" href="#katan_ai.katan.board.BoardRenderer">BoardRenderer</a></code></h4>
+<ul class="">
+<li><code><a title="katan_ai.katan.board.BoardRenderer.DEFAULT_HEX_COLORS" href="#katan_ai.katan.board.BoardRenderer.DEFAULT_HEX_COLORS">DEFAULT_HEX_COLORS</a></code></li>
+<li><code><a title="katan_ai.katan.board.BoardRenderer.DEFAULT_PLAYER_COLORS" href="#katan_ai.katan.board.BoardRenderer.DEFAULT_PLAYER_COLORS">DEFAULT_PLAYER_COLORS</a></code></li>
+<li><code><a title="katan_ai.katan.board.BoardRenderer.DEFAULT_RESOURCE_COLORS" href="#katan_ai.katan.board.BoardRenderer.DEFAULT_RESOURCE_COLORS">DEFAULT_RESOURCE_COLORS</a></code></li>
+<li><code><a title="katan_ai.katan.board.BoardRenderer.WATER_COLOR" href="#katan_ai.katan.board.BoardRenderer.WATER_COLOR">WATER_COLOR</a></code></li>
+<li><code><a title="katan_ai.katan.board.BoardRenderer.get_board_as_string" href="#katan_ai.katan.board.BoardRenderer.get_board_as_string">get_board_as_string</a></code></li>
+<li><code><a title="katan_ai.katan.board.BoardRenderer.get_coords_as_xy" href="#katan_ai.katan.board.BoardRenderer.get_coords_as_xy">get_coords_as_xy</a></code></li>
+<li><code><a title="katan_ai.katan.board.BoardRenderer.render_board" href="#katan_ai.katan.board.BoardRenderer.render_board">render_board</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.Building" href="#katan_ai.katan.board.Building">Building</a></code></h4>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.BuildingType" href="#katan_ai.katan.board.BuildingType">BuildingType</a></code></h4>
+<ul class="">
+<li><code><a title="katan_ai.katan.board.BuildingType.CITY" href="#katan_ai.katan.board.BuildingType.CITY">CITY</a></code></li>
+<li><code><a title="katan_ai.katan.board.BuildingType.ROAD" href="#katan_ai.katan.board.BuildingType.ROAD">ROAD</a></code></li>
+<li><code><a title="katan_ai.katan.board.BuildingType.SETTLEMENT" href="#katan_ai.katan.board.BuildingType.SETTLEMENT">SETTLEMENT</a></code></li>
+<li><code><a title="katan_ai.katan.board.BuildingType.get_required_resources" href="#katan_ai.katan.board.BuildingType.get_required_resources">get_required_resources</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.Coords" href="#katan_ai.katan.board.Coords">Coords</a></code></h4>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.Harbor" href="#katan_ai.katan.board.Harbor">Harbor</a></code></h4>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.Hex" href="#katan_ai.katan.board.Hex">Hex</a></code></h4>
+<ul class="">
+<li><code><a title="katan_ai.katan.board.Hex.CONNECTED_CORNER_OFFSETS" href="#katan_ai.katan.board.Hex.CONNECTED_CORNER_OFFSETS">CONNECTED_CORNER_OFFSETS</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.HexType" href="#katan_ai.katan.board.HexType">HexType</a></code></h4>
+<ul class="two-column">
+<li><code><a title="katan_ai.katan.board.HexType.DESERT" href="#katan_ai.katan.board.HexType.DESERT">DESERT</a></code></li>
+<li><code><a title="katan_ai.katan.board.HexType.FIELDS" href="#katan_ai.katan.board.HexType.FIELDS">FIELDS</a></code></li>
+<li><code><a title="katan_ai.katan.board.HexType.FOREST" href="#katan_ai.katan.board.HexType.FOREST">FOREST</a></code></li>
+<li><code><a title="katan_ai.katan.board.HexType.HILLS" href="#katan_ai.katan.board.HexType.HILLS">HILLS</a></code></li>
+<li><code><a title="katan_ai.katan.board.HexType.MOUNTAINS" href="#katan_ai.katan.board.HexType.MOUNTAINS">MOUNTAINS</a></code></li>
+<li><code><a title="katan_ai.katan.board.HexType.PASTURE" href="#katan_ai.katan.board.HexType.PASTURE">PASTURE</a></code></li>
+<li><code><a title="katan_ai.katan.board.HexType.get_resource" href="#katan_ai.katan.board.HexType.get_resource">get_resource</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.Intersection" href="#katan_ai.katan.board.Intersection">Intersection</a></code></h4>
+<ul class="">
+<li><code><a title="katan_ai.katan.board.Intersection.CONNECTED_CORNER_OFFSETS" href="#katan_ai.katan.board.Intersection.CONNECTED_CORNER_OFFSETS">CONNECTED_CORNER_OFFSETS</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.IntersectionBuilding" href="#katan_ai.katan.board.IntersectionBuilding">IntersectionBuilding</a></code></h4>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.Path" href="#katan_ai.katan.board.Path">Path</a></code></h4>
+<ul class="">
+<li><code><a title="katan_ai.katan.board.Path.other_intersection" href="#katan_ai.katan.board.Path.other_intersection">other_intersection</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.PathBuilding" href="#katan_ai.katan.board.PathBuilding">PathBuilding</a></code></h4>
+</li>
+<li>
+<h4><code><a title="katan_ai.katan.board.RandomBoard" href="#katan_ai.katan.board.RandomBoard">RandomBoard</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
