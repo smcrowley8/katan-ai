@@ -38,7 +38,7 @@ repos:
         name: pdoc
         language: python
         types: [python]
-        entry: pdoc --html --force --config show_source_code=False --output-dir docs/user katan_ai
+        entry: pdoc --html --force --config show_source_code=False --output-dir docs/user /katan_ai
         description: build documentation
         hooks:
           - id: end-of-file-fixer
