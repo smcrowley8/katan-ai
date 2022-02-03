@@ -2,10 +2,10 @@
 
 __version__ = "1.0.0"
 
-from ._development_card import DevelopmentCard
-from ._game import Game
-from ._player import Player
-from ._resource import Resource
-from ._roll_yield import RollYield
+from .development_card import DevelopmentCard
+from .game import Game
+from .player import Player
+from .resource import Resource
+from .roll_yield import RollYield
 
 __all__ = ["DevelopmentCard", "Game", "Player", "Resource", "RollYield", "board"]
