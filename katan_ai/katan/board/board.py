@@ -11,13 +11,14 @@ from ..errors import (
 from ..player import Player
 from ..resource import Resource
 from ..roll_yield import RollYield, RollYieldSource
-from .building import IntersectionBuilding, PathBuilding
+from .building import PathBuilding
 from .building_type import BuildingType
 from .coords import Coords
 from .harbor import Harbor
 from .hex import Hex
 from .hex_type import HexType
 from .intersection import Intersection
+from .intersection_building import IntersectionBuilding
 from .path import Path
 
 

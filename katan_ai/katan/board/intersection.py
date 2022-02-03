@@ -1,7 +1,7 @@
 from typing import Optional, Set
 
-from .building import IntersectionBuilding
 from .coords import Coords
+from .intersection_building import IntersectionBuilding
 
 
 class Intersection:
