@@ -35,5 +35,5 @@ def join_lobby(lobbyID: str) -> None:
 
 
 if __name__ == "__main__":
-    """Run main cli"""
+    """Run main CLI"""
     cli()
