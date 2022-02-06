@@ -29,6 +29,7 @@ class Hex:
         Coords(0, -1),
         Coords(1, -1),
     }
+    """A set representing the vertices of this hex with Coords"""
 
     def __init__(
         self, coords: Coords, hex_type: HexType, token_number: Optional[int] = None

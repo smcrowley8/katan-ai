@@ -7,15 +7,30 @@ default_language_version:
 exclude: "tests/.*$"
 
 repos:
-
   - repo: local
     hooks:
-      - id: pdoc
-        name: pdoc
-        language: python
-        types: [python]
-        entry: pdoc --force --html --config show_source_code=True --output-dir docs katan_ai
-        description: build documentation
+      - id: pdoc-filing
+        name: set pdoc
+        language: script
+        types: [bash]
+        entry: |
+          rm -r docs
+
+          mkdir docs
+
+          python -m pdoc --force --html --config show_source_code=False --output-dir docs katan_ai
+
+          mv docs/katan_ai docs
+
+          rmdir docs/katan_ai
+
+#    hooks:
+#      - id: pdoc
+#        name: pdoc
+#        language: python
+#        types: [python]
+#        entry: pdoc --force --html --config show_source_code=True --output-dir docs katan_ai
+#        description: build documentation
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1

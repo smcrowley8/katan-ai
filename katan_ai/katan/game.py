@@ -1,3 +1,4 @@
+"""Module for the game of katan"""
 from random import shuffle
 from typing import Dict, Optional, Set
 

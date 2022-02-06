@@ -1,4 +1,4 @@
-"""Represents a player in a katan game"""
+"""Module for a player in a katan game"""
 import random
 from typing import Dict, List, Optional
 

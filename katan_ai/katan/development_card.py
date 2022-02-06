@@ -29,6 +29,7 @@ class DevelopmentCard(Enum):
         return {Resource.WOOL: 1, Resource.GRAIN: 1, Resource.ORE: 1}
 
     def __str__(self):
+        """Return string representation of the development card"""
         return {
             DevelopmentCard.KNIGHT: "Knight",
             DevelopmentCard.YEAR_OF_PLENTY: "Year of Plenty",
@@ -38,4 +39,5 @@ class DevelopmentCard(Enum):
         }[self]
 
     def __repl__(self):
+        """Return string representation of the development card"""
         return self.__str__()

@@ -1,4 +1,4 @@
-"""Module representing a base building model as well as a road(PathBuilding)"""
+"""Module representing a base building model as well as a road (PathBuilding)"""
 from typing import Set
 
 from katan_ai.katan.board.building_type import BuildingType

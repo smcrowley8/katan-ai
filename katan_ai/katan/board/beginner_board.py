@@ -1,4 +1,4 @@
-"""Function representing the basic catan board format"""
+"""Module representing the basic catan board format"""
 from katan_ai.katan.board.board import Board, Resource
 from katan_ai.katan.board.coords import Coords
 from katan_ai.katan.board.harbor import Harbor

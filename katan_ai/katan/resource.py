@@ -1,4 +1,4 @@
-"""Represents resources that players can obtain"""
+"""Module representing resources that players can obtain"""
 from enum import Enum
 
 
@@ -17,6 +17,7 @@ class Resource(Enum):
     """The ore resource"""
 
     def __repl__(self):
+        """Return string representation of the resource"""
         return {
             Resource.LUMBER: "Lumber",
             Resource.BRICK: "Brick",
@@ -26,4 +27,5 @@ class Resource(Enum):
         }[self]
 
     def __str__(self):
+        """Return string representation of the resource"""
         return self.__repl__()
