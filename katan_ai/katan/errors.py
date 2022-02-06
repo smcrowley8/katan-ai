@@ -1,4 +1,4 @@
-"""Different types of errors that are raised when invalid input to provided."""
+"""Module containing custom errors"""
 
 
 class InvalidCoordsError(Exception):

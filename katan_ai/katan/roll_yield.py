@@ -1,4 +1,4 @@
-"""Module for where a rolls yield comes from and what it is"""
+"""Module relating a rolls yield to its source"""
 from katan_ai.katan.board.hex import Hex
 from katan_ai.katan.board.intersection_building import IntersectionBuilding
 from katan_ai.katan.resource import Resource
