@@ -19,7 +19,7 @@ if [[ "$CI" != 'true' ]]; then
 
     python -m pdoc --force --html --config show_source_code=False --output-dir docs katan_ai
 
-    mv docs/katan_ai docs
+    mv docs/katan_ai/* docs
 
     rmdir docs/katan_ai
 fi
