@@ -1,8 +1,25 @@
 [tool.poetry]
-name = "katan-ai"
+name = "katan_ai"
 version = "0.1.0"
 description = ""
-authors = ["smcrowley8 <smcrowley8@gmail.com>"]
+authors = ["Sean Crowley <smcrowley8@gmail.com>"]
+maintainers = ["Sean Crowleu <smcrowley8@gmail.com>"]
+readme = "README.md"
+homepage = ""
+repository = "https://github.com/smcrowley8/myAES"
+keywords = [
+    "Poetry",
+    "CLI",
+    "AES",
+    "encryption"
+]
+packages = [
+    {include = "katan_ai"}
+]
+
+[tool.poetry.scripts]
+katanAI= "katan_ai.cli:cli"
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -11,6 +28,13 @@ selenium = "^4.1.0"
 requests = "^2.27.1"
 pre-commit = "^2.17.0"
 rich = "^11.0.0"
+numpy = "^1.22.1"
+colored = "^1.4.3"
+click = "^8.0.3"
+webdriver-manager = "^3.5.2"
+pdoc3 = "^0.10.0"
+opencv-python = "^4.5.5"
+Pillow = "^9.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

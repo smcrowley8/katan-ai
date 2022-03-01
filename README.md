@@ -29,8 +29,5 @@ poetry install
 pre-commit install -t pre-commit -t pre-push
 ```
 
-To run tests:
 
-```bash
-poetry run pytest
-```
+For more on developing/contributing see [link](https://github.com/smcrowley8/katan-ai/tree/main/docs/dev/contributing.md)

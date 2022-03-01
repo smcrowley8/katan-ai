@@ -3,6 +3,7 @@ ignore = E203,E501,E731,W503,W605
 import-order-style = google
 application-import-names =
     katan_ai
+    katan
 exclude =
     *vendor*
     .venv
@@ -10,3 +11,4 @@ exclude =
     .git
     __init__.py
     setup.py
+    katan_ai/board

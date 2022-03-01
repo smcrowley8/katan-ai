@@ -90,8 +90,8 @@ jobs:
                 name: Run commit hooks
             - run:
                 command: |
-                    mkdir -p test-results/unit
-                    poetry run pytest --junit-xml test-results/unit/results.xml
+                    mkdir -p test-results
+                    poetry run pytest --junit-xml test-results/results.xml
                 name: Run tests
             - bump-branch-version
             - store-test-artifacts:
@@ -112,7 +112,7 @@ jobs:
             - run:
                 command: |4
 
-                    echo "no command until package usable"
+                    poetry run katanAI --help
                 name: Test CLI command
 orbs:
     aws-cli: circleci/aws-cli@2.0.3
@@ -128,4 +128,11 @@ workflows:
                     branches:
                         ignore:
                             - main
+            - package-test:
+                filters:
+                    branches:
+                        ignore:
+                            - main
+                requires:
+                    - build-test
 

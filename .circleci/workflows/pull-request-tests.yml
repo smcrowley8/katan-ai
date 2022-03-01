@@ -4,10 +4,10 @@ jobs:
         branches:
           ignore:
             - main
-#  - package-test:
-#      filters:
-#        branches:
-#          ignore:
-#            - main
-#      requires:
-#        - build-test
+  - package-test:
+      filters:
+        branches:
+          ignore:
+            - main
+      requires:
+        - build-test

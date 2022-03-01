@@ -10,19 +10,22 @@ if [[ "$CI" == "true" ]]; then
     touch "$CRUMB"
 fi
 
-if ! (command -v circleci >/dev/null 2>&1); then
-    echo "Installing CCI"
-    curl -fLSs https://circle.ci/cli | bash
-fi
 
 pushd "$REPO_ROOT" > /dev/null
-circleci config pack .circleci > .circleci/config.yml
-if [[ $? -ne 0 ]]; then
-    echo "Failed to validate .circleci/config.yml. please fix"
-    exit 1
-fi
 if [[ "$CI" != 'true' ]]; then
-    git add .circleci/config.yml
+    rm -r docs
+
+    mkdir docs
+
+    python -m pdoc --force --html --config show_source_code=False --output-dir docs katan_ai
+
+    mv docs/katan_ai/* docs
+
+    rmdir docs/katan_ai
+fi
+
+if [[ "$CI" != 'true' ]]; then
+   git add docs/\*
 fi
 #print errors
 popd > /dev/null
