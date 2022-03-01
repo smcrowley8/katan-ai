@@ -34,23 +34,16 @@ class Board:
     assuming all the hexes tile correctly.
 
     Args:
-        hexes:
-            The hexes on the board, keyed by their coordinates
-        harbors:
-            The harbors on the board
-        robber:
-            The initial coordinates of the robber. If None, then will automatically place the robber on the first
-            desert hex it can find, and raise an error if there are non
+        hexes (Set[Hex]): The hexes on the board, keyed by their coordinates
+        harbors (Set[Harbor]): The harbors on the board
+        robber (Coords): The initial coordinates of the robber. If None, then will automatically place the robber on the first
+            desert hex it can find, and raise an error if there are no desert hexes
 
     Attributes:
-        hexes (Dict[Coord, Hex]):
-            The hexes on this catan board, keyed by their coordinates
-        intersections: (Dict[Coords, Intersection]):
-            The intersections on the board, keyed by their coordinates
-        paths (Dict[frozenset[Coords], Path]):
-            The paths on the board, keyed by the coordinates of the two intersections they connect
-        harbors (Dict[frozenset[Coords], Harbor]):
-            The harbors on the board, keyed by the coords of the path they are attached to
+        hexes (Dict[Coord, Hex]): The hexes on this catan board, keyed by their coordinates
+        intersections (Dict[Coords, Intersection]): The intersections on the board, keyed by their coordinates
+        paths (Dict[frozenset[Coords], Path]): The paths on the board, keyed by the coordinates of the two intersections they connect
+        harbors (Dict[frozenset[Coords], Harbor]): The harbors on the board, keyed by the coords of the path they are attached to
         robber (Set[Coords]): The location of the robber
     """
 
@@ -98,10 +91,10 @@ class Board:
         Do not check if the player has enough resources, or any other checks other than the building's location being valid.
 
         Args:
-            player: The player adding the building
-            building_type: The building_type of the building being added
-            path_coords: The coordinates the path to build the building on (i.e. the coordinates of the two intersections the path connects)
-            ensure_connected: Whether to ensure that the path building is connected to another building. Defaults to True
+            player (Player): The player adding the building
+            building_type (BuildingType): The building_type of the building being added
+            path_coords (Set[Coords]): The coordinates the path to build the building on (i.e. the coordinates of the two intersections the path connects)
+            ensure_connected (Optional[bool]): Whether to ensure that the path building is connected to another building. Defaults to True
         Raises:
             ValueError: If the path_coords are not valid
             CoordsBlockedError: If there is already a building on the path
